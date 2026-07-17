@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://bhvhngq48oxra"]
+[gd_scene format=4 uid="uid://bhvhngq48oxra"]
 
 [ext_resource type="Texture2D" uid="uid://oafuxcofns2s" path="res://assets/spritesheet-tiles-default.png" id="1_jwv3a"]
+[ext_resource type="PackedScene" uid="uid://cimqdjpvsfqn8" path="res://test/player.tscn" id="2_dopym"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dopym"]
 texture = ExtResource("1_jwv3a")
@@ -338,4 +339,8 @@ sources/3 = SubResource("TileSetAtlasSource_dopym")
 [node name="Level1" type="Node2D" unique_id=1241748105]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2056656765]
+tile_map_data = PackedByteArray("AAAAAAkAAwAMAAkAAAABAAkAAwALAAkAAAACAAkAAwALAAkAAAADAAkAAwALAAkAAAAEAAkAAwALAAkAAAAFAAkAAwALAAkAAAAGAAkAAwALAAkAAAAHAAkAAwALAAkAAAAIAAkAAwALAAkAAAAJAAkAAwALAAkAAAAKAAkAAwALAAkAAAALAAkAAwALAAkAAAAMAAkAAwALAAkAAAANAAkAAwALAAkAAAAOAAkAAwALAAkAAAAPAAkAAwALAAkAAAAQAAkAAwALAAkAAAARAAkAAwALAAkAAAASAAkAAwALAAkAAAATAAkAAwANAAkAAAA=")
 tile_set = SubResource("TileSet_lgp48")
+
+[node name="Player" parent="." unique_id=854989483 instance=ExtResource("2_dopym")]
+position = Vector2(163, 163)
