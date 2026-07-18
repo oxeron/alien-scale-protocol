@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dp8ac5fhec1em" path="res://elements/platforms/extensible_platform/extensible_platform.tscn" id="8_usj0q"]
 [ext_resource type="PackedScene" uid="uid://bppbpisnn8afi" path="res://elements/button/button.tscn" id="8_xy4tn"]
 [ext_resource type="PackedScene" uid="uid://bs16ee3q28ahw" path="res://elements/box/box.tscn" id="9_5j5gb"]
+[ext_resource type="Texture2D" uid="uid://brerocrm0pavb" path="res://assets/UI/keyboard_arrow_left_outline.png" id="11_hx44q"]
+[ext_resource type="Texture2D" uid="uid://c2u1lgi7348vv" path="res://assets/UI/keyboard_arrow_right_outline.png" id="12_n8vhr"]
+[ext_resource type="Texture2D" uid="uid://ddycye7twh78j" path="res://assets/UI/keyboard_space_outline.png" id="13_n8vhr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bxsck"]
 atlas = ExtResource("5_v8kj3")
@@ -519,12 +522,14 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/3 = SubResource("TileSetAtlasSource_dopym")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5j5gb"]
+size = Vector2(128, 64)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2041"]
 size = Vector2(448, 64)
 
 [sub_resource type="GDScript" id="GDScript_vkktu"]
 script/source = "extends CharacterBody2D
-
 
 @export var push_force: float = 200.0
 
@@ -699,6 +704,48 @@ tile_map_data = PackedByteArray("AAAAAAkAAwALAAkAAAABAAkAAwALAAkAAAACAAkAAwALAAk
 tile_set = SubResource("TileSet_lgp48")
 collision_visibility_mode = 1
 
+[node name="Keys" type="Node2D" parent="." unique_id=971697438]
+z_index = -1
+
+[node name="KeyboardArrowLeftOutline" type="Sprite2D" parent="Keys" unique_id=1722693770]
+modulate = Color(0.6862745, 0.043137256, 0.16470589, 1)
+position = Vector2(190, 207)
+texture = ExtResource("11_hx44q")
+
+[node name="Label" type="Label" parent="Keys/KeyboardArrowLeftOutline" unique_id=630227092]
+offset_left = 27.0
+offset_top = -14.0
+offset_right = 110.0
+offset_bottom = 18.0
+theme = ExtResource("3_ootpb")
+text = "Move left"
+
+[node name="KeyboardArrowRightOutline" type="Sprite2D" parent="Keys" unique_id=1551625175]
+modulate = Color(0.68603534, 0.043691486, 0.16579124, 1)
+position = Vector2(240, 267)
+texture = ExtResource("12_n8vhr")
+
+[node name="Label" type="Label" parent="Keys/KeyboardArrowRightOutline" unique_id=1387577922]
+offset_left = 41.0
+offset_top = -20.0
+offset_right = 343.0
+offset_bottom = 25.0
+theme = ExtResource("3_ootpb")
+text = "Move right"
+
+[node name="KeyboardSpaceOutline" type="Sprite2D" parent="Keys" unique_id=199959405]
+modulate = Color(0.6862745, 0.043137256, 0.16470589, 1)
+position = Vector2(424, 416)
+texture = ExtResource("13_n8vhr")
+
+[node name="Label" type="Label" parent="Keys/KeyboardSpaceOutline" unique_id=295905111]
+offset_left = 31.0
+offset_top = -21.0
+offset_right = 333.0
+offset_bottom = 24.0
+theme = ExtResource("3_ootpb")
+text = "Jump"
+
 [node name="Elements" type="Node2D" parent="." unique_id=1140752181]
 
 [node name="DieArea" parent="Elements" unique_id=533860757 instance=ExtResource("7_i2041")]
@@ -709,7 +756,7 @@ position = Vector2(1632, 766)
 
 [node name="CollisionShape2D" parent="Elements/DieArea2" index="0" unique_id=406408250]
 position = Vector2(32, 0)
-shape = SubResource("RectangleShape2D_i2041")
+shape = SubResource("RectangleShape2D_5j5gb")
 
 [node name="DieArea3" parent="Elements" unique_id=2072846359 instance=ExtResource("7_i2041")]
 position = Vector2(2016, 766)
@@ -735,7 +782,7 @@ position = Vector2(1984, 598)
 position = Vector2(1009, 576)
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=854989483 groups=["player"]]
-position = Vector2(1861, 577)
+position = Vector2(272, 178)
 collision_layer = 2
 collision_mask = 5
 script = SubResource("GDScript_vkktu")
