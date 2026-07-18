@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bs16ee3q28ahw"]
+
+[ext_resource type="Texture2D" uid="uid://oafuxcofns2s" path="res://assets/spritesheet-tiles-default.png" id="1_c4qbw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fa5p"]
+size = Vector2(64, 64)
+
+[node name="Box" type="RigidBody2D" unique_id=922700578]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1732944633]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_7fa5p")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=171746085]
+position = Vector2(0, -32)
+texture = ExtResource("1_c4qbw")
+region_enabled = true
+region_rect = Rect2(585, 0, 64, 64)
