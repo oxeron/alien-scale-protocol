@@ -127,8 +127,9 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7fa5p"]
-radius = 30.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4flbx"]
+radius = 34.5
+height = 106.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1472009076 groups=["player"]]
 collision_layer = 2
@@ -144,11 +145,11 @@ limit_bottom = 768
 position_smoothing_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1684732667]
-position = Vector2(0, -65)
 sprite_frames = SubResource("SpriteFrames_j30ru")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
+centered = false
+offset = Vector2(-64, -75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=37629409]
-position = Vector2(-1, -31)
-shape = SubResource("CircleShape2D_7fa5p")
+shape = SubResource("CapsuleShape2D_4flbx")
