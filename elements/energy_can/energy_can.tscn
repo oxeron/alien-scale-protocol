@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dm7gxy37mdhlt"]
+
+[ext_resource type="Script" uid="uid://dwhkdejivv7a6" path="res://elements/energy_can/energy_can.gd" id="1_5lamg"]
+[ext_resource type="Texture2D" uid="uid://c65kjwdftfl71" path="res://assets/platformerPack_industrial_tilesheet.png" id="1_jmqmf"]
+
+[sub_resource type="Gradient" id="Gradient_5lamg"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 0.15294118, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nauge"]
+gradient = SubResource("Gradient_5lamg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5lamg"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 39.11
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 58.55
+gravity = Vector3(0, -30, 0)
+color_ramp = SubResource("GradientTexture1D_nauge")
+turbulence_enabled = true
+turbulence_noise_scale = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_beq0j"]
+size = Vector2(50, 69)
+
+[node name="EnergyCan" type="Area2D" unique_id=1108197438]
+collision_mask = 2
+script = ExtResource("1_5lamg")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1568972182]
+position = Vector2(0, -70)
+amount = 14
+process_material = SubResource("ParticleProcessMaterial_5lamg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=184662205]
+position = Vector2(0, -35)
+texture = ExtResource("1_jmqmf")
+region_enabled = true
+region_rect = Rect2(500, 420, 50, 70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=47141194]
+position = Vector2(0, -35)
+shape = SubResource("RectangleShape2D_beq0j")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
