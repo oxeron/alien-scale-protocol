@@ -3,6 +3,8 @@ extends Node2D
 @onready var chrono: Label = $HUD/Chrono
 @onready var retries: Label = $HUD/Retries
 @onready var retry_button: TextureButton = $HUD/RetryButton
+@onready var energy_progress_bar: TextureProgressBar = $HUD/EnergyProgressBar
+
 
 var elapsed_time: float = 0.0
 var is_chrono_running: bool = true
@@ -11,7 +13,11 @@ var is_chrono_running: bool = true
 func _ready() -> void:
 	elapsed_time = 0.0
 	update_retry_label()
+	
+	if not GameState.energy_changed.is_connected(_on_energy_changed):
+		GameState.energy_changed.connect(_on_energy_changed)
 
+	_on_energy_changed(GameState.energy)
 
 func _physics_process(delta: float) -> void:
 	if is_chrono_running:
@@ -36,3 +42,6 @@ func _on_retry_button_pressed() -> void:
 
 func update_retry_label() -> void:
 	retries.text = "%02d Retry" % [GameState.retry_count] if GameState.retry_count <= 1 else "%02d Retries" % [GameState.retry_count]
+
+func _on_energy_changed(energy: int):
+	energy_progress_bar.value = energy
