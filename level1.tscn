@@ -628,7 +628,7 @@ text = "00:00.00"
 horizontal_alignment = 2
 
 [node name="Retries" type="Label" parent="HUD" unique_id=1444943565]
-offset_left = 973.0
+offset_left = 921.0
 offset_top = 21.0
 offset_right = 1216.0
 offset_bottom = 96.0

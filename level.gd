@@ -6,11 +6,11 @@ extends Node2D
 
 var elapsed_time: float = 0.0
 var is_chrono_running: bool = true
-var retry_count: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	elapsed_time = 0.0
+	update_retry_label()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -27,7 +27,11 @@ func update_time_label() -> void:
 
 
 func _on_retry_button_pressed() -> void:
+	print(GameState.retry_count)
+	GameState.register_retry()
 	get_tree().reload_current_scene()
-	elapsed_time = 0.0
-	retry_count += 1
-	retries.text = "%02d Retry" % [retry_count]
+	print(GameState.retry_count)
+	
+
+func update_retry_label() -> void:
+	retries.text = "%02d Retry" % [GameState.retry_count] if GameState.retry_count <= 1 else "%02d Retries" % [GameState.retry_count]
