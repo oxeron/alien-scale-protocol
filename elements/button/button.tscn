@@ -19,13 +19,14 @@ size = Vector2(64, 41)
 
 [node name="Button" type="Area2D" unique_id=1556884513]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_6l8wf")
 off_state_texture = SubResource("AtlasTexture_6l8wf")
 on_state_texture = SubResource("AtlasTexture_tmonl")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1513824500]
 position = Vector2(0, -32)
+texture = SubResource("AtlasTexture_6l8wf")
 region_rect = Rect2(260, 455, 64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1093329621]
