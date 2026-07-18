@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://bhvhngq48oxra"]
 
+[ext_resource type="Script" uid="uid://bdd01ol2g5m5y" path="res://level.gd" id="1_crycw"]
 [ext_resource type="Texture2D" uid="uid://oafuxcofns2s" path="res://assets/spritesheet-tiles-default.png" id="1_jwv3a"]
 [ext_resource type="Texture2D" uid="uid://6ao3csmdiobn" path="res://assets/spritesheet-characters-default.png" id="2_dopym"]
 [ext_resource type="Texture2D" uid="uid://buxs0qtm84tnv" path="res://assets/UI/icon_repeat_light.png" id="2_v38iq"]
@@ -613,6 +614,7 @@ animations = [{
 radius = 50.08992
 
 [node name="Level1" type="Node2D" unique_id=1241748105]
+script = ExtResource("1_crycw")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1634653022]
 
@@ -622,22 +624,24 @@ offset_top = 19.0
 offset_right = 282.0
 offset_bottom = 94.0
 theme = ExtResource("3_ootpb")
-text = "00:00:00"
+text = "00:00.00"
+horizontal_alignment = 2
 
 [node name="Retries" type="Label" parent="HUD" unique_id=1444943565]
-offset_left = 310.0
-offset_top = 19.0
-offset_right = 553.0
-offset_bottom = 94.0
+offset_left = 973.0
+offset_top = 21.0
+offset_right = 1216.0
+offset_bottom = 96.0
 theme = ExtResource("3_ootpb")
-text = "/ 0 Retry"
+text = "0 Retry"
+horizontal_alignment = 2
 
-[node name="TextureButton" type="TextureButton" parent="HUD" unique_id=522397218]
+[node name="RetryButton" type="TextureButton" parent="HUD" unique_id=522397218]
 modulate = Color(0.96069044, 0.4055525, 0.30034432, 1)
-offset_left = 1219.0
-offset_top = 20.0
-offset_right = 1259.0
-offset_bottom = 60.0
+offset_left = 1228.0
+offset_top = 25.0
+offset_right = 1269.0
+offset_bottom = 65.0
 texture_normal = ExtResource("2_v38iq")
 flip_h = true
 
@@ -655,8 +659,22 @@ offset_right = 483.0
 offset_bottom = 723.0
 texture = SubResource("AtlasTexture_bxsck")
 
+[node name="Sprite2D2" type="TextureRect" parent="Background" unique_id=1460157515]
+offset_left = 483.0
+offset_top = 233.0
+offset_right = 967.0
+offset_bottom = 723.0
+texture = SubResource("AtlasTexture_bxsck")
+
+[node name="Sprite2D3" type="TextureRect" parent="Background" unique_id=690390054]
+offset_left = 967.0
+offset_top = 233.0
+offset_right = 1451.0
+offset_bottom = 723.0
+texture = SubResource("AtlasTexture_bxsck")
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2056656765]
-tile_map_data = PackedByteArray("AAAAAAkAAwAMAAkAAAABAAkAAwALAAkAAAACAAkAAwALAAkAAAADAAkAAwALAAkAAAAEAAkAAwALAAkAAAAFAAkAAwALAAkAAAAGAAkAAwALAAkAAAAHAAkAAwALAAkAAAAIAAkAAwALAAkAAAAJAAkAAwALAAkAAAAKAAkAAwALAAkAAAALAAkAAwALAAkAAAAMAAkAAwALAAkAAAANAAkAAwALAAkAAAAOAAkAAwALAAkAAAAPAAkAAwALAAkAAAAQAAkAAwALAAkAAAARAAkAAwALAAkAAAASAAkAAwALAAkAAAATAAkAAwANAAkAAAAGAAgAAwAMAAkAAAAHAAgAAwALAAkAAAAIAAgAAwANAAkAAAAAAAoAAwALAAwAAAABAAoAAwAKAAwAAAACAAoAAwAKAAwAAAADAAoAAwAKAAwAAAAEAAoAAwAKAAwAAAAFAAoAAwAKAAwAAAAGAAoAAwAKAAwAAAAHAAoAAwAKAAwAAAAIAAoAAwAKAAwAAAAJAAoAAwAKAAwAAAAKAAoAAwAKAAwAAAALAAoAAwAKAAwAAAAMAAoAAwAKAAwAAAANAAoAAwAKAAwAAAAOAAoAAwAKAAwAAAAPAAoAAwAKAAwAAAAQAAoAAwAKAAwAAAARAAoAAwAKAAwAAAASAAoAAwAKAAwAAAATAAoAAwAMAAwAAAATAAsAAwAMAAwAAAASAAsAAwAKAAwAAAARAAsAAwAKAAwAAAAQAAsAAwAKAAwAAAAPAAsAAwAKAAwAAAAOAAsAAwAKAAwAAAANAAsAAwAKAAwAAAAMAAsAAwAKAAwAAAALAAsAAwAKAAwAAAAKAAsAAwAKAAwAAAAJAAsAAwAKAAwAAAAIAAsAAwAKAAwAAAAHAAsAAwAKAAwAAAAGAAsAAwAKAAwAAAAAAAsAAwALAAwAAAABAAsAAwAKAAwAAAACAAsAAwAKAAwAAAADAAsAAwAKAAwAAAAEAAsAAwAKAAwAAAAFAAsAAwAKAAwAAAAAAAgAAwAKAAkAAAAAAAcAAwAKAAkAAAAAAAYAAwAKAAkAAAAAAAUAAwAKAAkAAAAAAAQAAwAKAAkAAAAAAAMAAwAKAAkAAAAAAAIAAwAKAAkAAAAAAAEAAwAKAAkAAAAAAAAAAwAKAAkAAAA=")
+tile_map_data = PackedByteArray("AAAAAAkAAwALAAkAAAABAAkAAwALAAkAAAACAAkAAwALAAkAAAADAAkAAwALAAkAAAAEAAkAAwALAAkAAAAFAAkAAwALAAkAAAAGAAkAAwALAAkAAAAHAAkAAwALAAkAAAAIAAkAAwALAAkAAAAJAAkAAwALAAkAAAAKAAkAAwALAAkAAAALAAkAAwALAAkAAAAMAAkAAwALAAkAAAANAAkAAwALAAkAAAAOAAkAAwALAAkAAAAPAAkAAwALAAkAAAAQAAkAAwALAAkAAAARAAkAAwALAAkAAAASAAkAAwALAAkAAAATAAkAAwANAAkAAAAGAAgAAwAMAAkAAAAHAAgAAwALAAkAAAAIAAgAAwANAAkAAAAAAAoAAwAKAAwAAAABAAoAAwAKAAwAAAACAAoAAwAKAAwAAAADAAoAAwAKAAwAAAAEAAoAAwAKAAwAAAAFAAoAAwAKAAwAAAAGAAoAAwAKAAwAAAAHAAoAAwAKAAwAAAAIAAoAAwAKAAwAAAAJAAoAAwAKAAwAAAAKAAoAAwAKAAwAAAALAAoAAwAKAAwAAAAMAAoAAwAKAAwAAAANAAoAAwAKAAwAAAAOAAoAAwAKAAwAAAAPAAoAAwAKAAwAAAAQAAoAAwAKAAwAAAARAAoAAwAKAAwAAAASAAoAAwAKAAwAAAATAAoAAwAMAAwAAAATAAsAAwAMAAwAAAASAAsAAwAKAAwAAAARAAsAAwAKAAwAAAAQAAsAAwAKAAwAAAAPAAsAAwAKAAwAAAAOAAsAAwAKAAwAAAANAAsAAwAKAAwAAAAMAAsAAwAKAAwAAAALAAsAAwAKAAwAAAAKAAsAAwAKAAwAAAAJAAsAAwAKAAwAAAAIAAsAAwAKAAwAAAAHAAsAAwAKAAwAAAAGAAsAAwAKAAwAAAAAAAsAAwAKAAwAAAABAAsAAwAKAAwAAAACAAsAAwAKAAwAAAADAAsAAwAKAAwAAAAEAAsAAwAKAAwAAAAFAAsAAwAKAAwAAAAAAAgAAwAKAAkAAAAAAAcAAwAKAAkAAAAAAAYAAwAKAAkAAAAAAAUAAwAKAAkAAAAAAAQAAwAKAAkAAAAAAAMAAwAKAAkAAAAAAAIAAwAKAAkAAAAAAAEAAwAKAAkAAAAAAAAAAwAKAAkAAAAAAAwAAwAKAAwAAAABAAwAAwAKAAwAAAACAAwAAwAKAAwAAAADAAwAAwAKAAwAAAAEAAwAAwAKAAwAAAAFAAwAAwAKAAwAAAAGAAwAAwAKAAwAAAAHAAwAAwAKAAwAAAAIAAwAAwAKAAwAAAAJAAwAAwAKAAwAAAAKAAwAAwAKAAwAAAALAAwAAwAKAAwAAAAMAAwAAwAKAAwAAAANAAwAAwAKAAwAAAAOAAwAAwAKAAwAAAAPAAwAAwAKAAwAAAAQAAwAAwAKAAwAAAARAAwAAwAKAAwAAAASAAwAAwAKAAwAAAATAAwAAwAMAAwAAAA=")
 tile_set = SubResource("TileSet_lgp48")
 collision_visibility_mode = 1
 
@@ -682,3 +700,5 @@ frame_progress = 0.45550293
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1286797294]
 position = Vector2(0, -50)
 shape = SubResource("CircleShape2D_7fa5p")
+
+[connection signal="pressed" from="HUD/RetryButton" to="." method="_on_retry_button_pressed"]
