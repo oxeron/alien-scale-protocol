@@ -23,6 +23,7 @@ collision_mask = 6
 script = ExtResource("1_6l8wf")
 off_state_texture = SubResource("AtlasTexture_6l8wf")
 on_state_texture = SubResource("AtlasTexture_tmonl")
+keep_pressed = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1513824500]
 position = Vector2(0, -32)

@@ -10,13 +10,13 @@ size = Vector2(210, 22)
 collision_mask = 0
 script = ExtResource("1_v5d7d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1539126981]
-position = Vector2(105, -11)
-shape = SubResource("RectangleShape2D_7fa5p")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1504596406]
 position = Vector2(0, -22)
 texture = ExtResource("1_jqgca")
 centered = false
 region_enabled = true
 region_rect = Rect2(420, 140, 210, 22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1539126981]
+position = Vector2(105, -11)
+shape = SubResource("RectangleShape2D_7fa5p")
