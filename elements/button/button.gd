@@ -8,7 +8,7 @@ extends Area2D
 ## Should the button keep pressed state even if body leaves ?
 @export var keep_pressed : bool = false
 ## Does button require player scale minimum amount ?
-@export var player_minimal_scale : float= 1.0
+@export var player_minimal_scale : float = 1.0
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
