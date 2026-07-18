@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://brerocrm0pavb" path="res://assets/UI/keyboard_arrow_left_outline.png" id="11_hx44q"]
 [ext_resource type="Texture2D" uid="uid://c2u1lgi7348vv" path="res://assets/UI/keyboard_arrow_right_outline.png" id="12_n8vhr"]
 [ext_resource type="Texture2D" uid="uid://ddycye7twh78j" path="res://assets/UI/keyboard_space_outline.png" id="13_n8vhr"]
+[ext_resource type="PackedScene" uid="uid://dm7gxy37mdhlt" path="res://elements/energy_can/energy_can.tscn" id="17_beq0j"]
 [ext_resource type="PackedScene" uid="uid://ct6tn7jqvw0jn" path="res://player.tscn" id="18_beq0j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7fa5p"]
@@ -537,6 +538,9 @@ size = Vector2(128, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2041"]
 size = Vector2(448, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nauge"]
+size = Vector2(128, 128)
+
 [node name="Level1" type="Node2D" unique_id=1241748105]
 script = ExtResource("1_crycw")
 metadata/_edit_horizontal_guides_ = [768.0, 45.0]
@@ -629,7 +633,7 @@ z_index = -1
 
 [node name="KeyboardArrowLeftOutline" type="Sprite2D" parent="Keys" unique_id=1722693770]
 modulate = Color(0.6862745, 0.043137256, 0.16470589, 1)
-position = Vector2(190, 207)
+position = Vector2(117, 241)
 texture = ExtResource("11_hx44q")
 
 [node name="Label" type="Label" parent="Keys/KeyboardArrowLeftOutline" unique_id=630227092]
@@ -642,7 +646,7 @@ text = "Move left"
 
 [node name="KeyboardArrowRightOutline" type="Sprite2D" parent="Keys" unique_id=1551625175]
 modulate = Color(0.68603534, 0.043691486, 0.16579124, 1)
-position = Vector2(240, 267)
+position = Vector2(167, 301)
 texture = ExtResource("12_n8vhr")
 
 [node name="Label" type="Label" parent="Keys/KeyboardArrowRightOutline" unique_id=1387577922]
@@ -655,7 +659,7 @@ text = "Move right"
 
 [node name="KeyboardSpaceOutline" type="Sprite2D" parent="Keys" unique_id=199959405]
 modulate = Color(0.6862745, 0.043137256, 0.16470589, 1)
-position = Vector2(424, 416)
+position = Vector2(320, 417)
 texture = ExtResource("13_n8vhr")
 
 [node name="Label" type="Label" parent="Keys/KeyboardSpaceOutline" unique_id=295905111]
@@ -727,10 +731,25 @@ position = Vector2(1984, 598)
 [node name="Box" parent="Elements" unique_id=1278369624 instance=ExtResource("9_5j5gb")]
 position = Vector2(1009, 576)
 
+[node name="Box2" parent="Elements" unique_id=922700578 instance=ExtResource("9_5j5gb")]
+position = Vector2(858, 544)
+mass = 10.0
+
+[node name="CollisionShape2D" parent="Elements/Box2" index="0" unique_id=1732944633]
+shape = SubResource("RectangleShape2D_nauge")
+
+[node name="Sprite2D" parent="Elements/Box2" index="1" unique_id=171746085]
+scale = Vector2(2, 2)
+
+[node name="EnergyCan" parent="Elements" unique_id=1108197438 instance=ExtResource("17_beq0j")]
+position = Vector2(540, 512)
+
 [node name="Player" parent="." unique_id=1472009076 instance=ExtResource("18_beq0j")]
 position = Vector2(265, 178)
+push_force = 80.0
 
 [connection signal="pressed" from="HUD/RetryButton" to="." method="_on_retry_button_pressed"]
 
 [editable path="Elements/DieArea2"]
 [editable path="Elements/DieArea3"]
+[editable path="Elements/Box2"]
