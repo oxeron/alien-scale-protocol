@@ -1,4 +1,4 @@
-extends AnimatableBody2D
+extends BasePlatform
 
 
 @export var extensible_length : int 
@@ -28,3 +28,8 @@ func deactivate() -> void:
 	sprite_2d.scale.x = 1
 	collision_shape_2d.shape.size.x /= 2
 	collision_shape_2d.position.x = collision_shape_2d.shape.size.x * 2
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if GameState.player_scale > player_maximal_scale:
+		is_falling = true
