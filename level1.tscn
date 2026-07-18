@@ -2,6 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://oafuxcofns2s" path="res://assets/spritesheet-tiles-default.png" id="1_jwv3a"]
 [ext_resource type="Texture2D" uid="uid://6ao3csmdiobn" path="res://assets/spritesheet-characters-default.png" id="2_dopym"]
+[ext_resource type="Texture2D" uid="uid://buxs0qtm84tnv" path="res://assets/UI/icon_repeat_light.png" id="2_v38iq"]
+[ext_resource type="Theme" uid="uid://c1phpb7rg55rd" path="res://theme.tres" id="3_ootpb"]
+[ext_resource type="Texture2D" uid="uid://c47isw8ns0ylw" path="res://assets/spritesheet-backgrounds-default.png" id="5_v8kj3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxsck"]
+atlas = ExtResource("5_v8kj3")
+region = Rect2(257, 257, 256, 256)
+filter_clip = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dopym"]
 texture = ExtResource("1_jwv3a")
@@ -606,15 +614,63 @@ radius = 50.08992
 
 [node name="Level1" type="Node2D" unique_id=1241748105]
 
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1634653022]
+
+[node name="Chrono" type="Label" parent="HUD" unique_id=506067518]
+offset_left = 79.0
+offset_top = 19.0
+offset_right = 282.0
+offset_bottom = 94.0
+theme = ExtResource("3_ootpb")
+text = "00:00:00"
+
+[node name="Retries" type="Label" parent="HUD" unique_id=1444943565]
+offset_left = 310.0
+offset_top = 19.0
+offset_right = 553.0
+offset_bottom = 94.0
+theme = ExtResource("3_ootpb")
+text = "/ 0 Retry"
+
+[node name="TextureButton" type="TextureButton" parent="HUD" unique_id=522397218]
+modulate = Color(0.96069044, 0.4055525, 0.30034432, 1)
+offset_left = 1219.0
+offset_top = 20.0
+offset_right = 1259.0
+offset_bottom = 60.0
+texture_normal = ExtResource("2_v38iq")
+flip_h = true
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=801850366]
+layer = -2
+
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=1802169228]
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Sprite2D" type="TextureRect" parent="Background" unique_id=1422764152]
+offset_left = -1.0
+offset_top = 233.0
+offset_right = 483.0
+offset_bottom = 723.0
+texture = SubResource("AtlasTexture_bxsck")
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2056656765]
-tile_map_data = PackedByteArray("AAAAAAkAAwAMAAkAAAABAAkAAwALAAkAAAACAAkAAwALAAkAAAADAAkAAwALAAkAAAAEAAkAAwALAAkAAAAFAAkAAwALAAkAAAAGAAkAAwALAAkAAAAHAAkAAwALAAkAAAAIAAkAAwALAAkAAAAJAAkAAwALAAkAAAAKAAkAAwALAAkAAAALAAkAAwALAAkAAAAMAAkAAwALAAkAAAANAAkAAwALAAkAAAAOAAkAAwALAAkAAAAPAAkAAwALAAkAAAAQAAkAAwALAAkAAAARAAkAAwALAAkAAAASAAkAAwALAAkAAAATAAkAAwANAAkAAAAGAAcAAwAJAAkAAAAGAAgAAwAGAAkAAAAHAAgAAwAFAAkAAAAIAAgAAwAHAAkAAAAIAAcAAwAKAAkAAAAHAAcAAwAIAAkAAAA=")
+tile_map_data = PackedByteArray("AAAAAAkAAwAMAAkAAAABAAkAAwALAAkAAAACAAkAAwALAAkAAAADAAkAAwALAAkAAAAEAAkAAwALAAkAAAAFAAkAAwALAAkAAAAGAAkAAwALAAkAAAAHAAkAAwALAAkAAAAIAAkAAwALAAkAAAAJAAkAAwALAAkAAAAKAAkAAwALAAkAAAALAAkAAwALAAkAAAAMAAkAAwALAAkAAAANAAkAAwALAAkAAAAOAAkAAwALAAkAAAAPAAkAAwALAAkAAAAQAAkAAwALAAkAAAARAAkAAwALAAkAAAASAAkAAwALAAkAAAATAAkAAwANAAkAAAAGAAgAAwAMAAkAAAAHAAgAAwALAAkAAAAIAAgAAwANAAkAAAAAAAoAAwALAAwAAAABAAoAAwAKAAwAAAACAAoAAwAKAAwAAAADAAoAAwAKAAwAAAAEAAoAAwAKAAwAAAAFAAoAAwAKAAwAAAAGAAoAAwAKAAwAAAAHAAoAAwAKAAwAAAAIAAoAAwAKAAwAAAAJAAoAAwAKAAwAAAAKAAoAAwAKAAwAAAALAAoAAwAKAAwAAAAMAAoAAwAKAAwAAAANAAoAAwAKAAwAAAAOAAoAAwAKAAwAAAAPAAoAAwAKAAwAAAAQAAoAAwAKAAwAAAARAAoAAwAKAAwAAAASAAoAAwAKAAwAAAATAAoAAwAMAAwAAAATAAsAAwAMAAwAAAASAAsAAwAKAAwAAAARAAsAAwAKAAwAAAAQAAsAAwAKAAwAAAAPAAsAAwAKAAwAAAAOAAsAAwAKAAwAAAANAAsAAwAKAAwAAAAMAAsAAwAKAAwAAAALAAsAAwAKAAwAAAAKAAsAAwAKAAwAAAAJAAsAAwAKAAwAAAAIAAsAAwAKAAwAAAAHAAsAAwAKAAwAAAAGAAsAAwAKAAwAAAAAAAsAAwALAAwAAAABAAsAAwAKAAwAAAACAAsAAwAKAAwAAAADAAsAAwAKAAwAAAAEAAsAAwAKAAwAAAAFAAsAAwAKAAwAAAAAAAgAAwAKAAkAAAAAAAcAAwAKAAkAAAAAAAYAAwAKAAkAAAAAAAUAAwAKAAkAAAAAAAQAAwAKAAkAAAAAAAMAAwAKAAkAAAAAAAIAAwAKAAkAAAAAAAEAAwAKAAkAAAAAAAAAAwAKAAkAAAA=")
 tile_set = SubResource("TileSet_lgp48")
 collision_visibility_mode = 1
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=854989483]
-position = Vector2(163, 163)
+position = Vector2(189, 391)
 collision_layer = 2
 script = SubResource("GDScript_vkktu")
+metadata/_edit_group_ = true
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=101890984]
+position = Vector2(-163, -163)
+limit_left = 0
+limit_top = 0
+position_smoothing_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=520309190]
 position = Vector2(0, -64)
