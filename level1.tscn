@@ -570,7 +570,7 @@ offset_bottom = 65.0
 texture_normal = ExtResource("2_v38iq")
 flip_h = true
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD" unique_id=1996753141]
+[node name="EnergyProgressBar" type="TextureProgressBar" parent="HUD" unique_id=1996753141]
 offset_left = 136.0
 offset_top = 30.0
 offset_right = 336.0
