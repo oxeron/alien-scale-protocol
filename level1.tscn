@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bdd01ol2g5m5y" path="res://level.gd" id="1_crycw"]
 [ext_resource type="Texture2D" uid="uid://oafuxcofns2s" path="res://assets/spritesheet-tiles-default.png" id="1_jwv3a"]
-[ext_resource type="Texture2D" uid="uid://6ao3csmdiobn" path="res://assets/spritesheet-characters-default.png" id="2_dopym"]
 [ext_resource type="Texture2D" uid="uid://buxs0qtm84tnv" path="res://assets/UI/icon_repeat_light.png" id="2_v38iq"]
 [ext_resource type="Theme" uid="uid://c1phpb7rg55rd" path="res://theme.tres" id="3_ootpb"]
 [ext_resource type="Texture2D" uid="uid://cp523mufvec70" path="res://assets/UI/bar_shadow_round_large.png" id="4_1idop"]
@@ -18,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://brerocrm0pavb" path="res://assets/UI/keyboard_arrow_left_outline.png" id="11_hx44q"]
 [ext_resource type="Texture2D" uid="uid://c2u1lgi7348vv" path="res://assets/UI/keyboard_arrow_right_outline.png" id="12_n8vhr"]
 [ext_resource type="Texture2D" uid="uid://ddycye7twh78j" path="res://assets/UI/keyboard_space_outline.png" id="13_n8vhr"]
+[ext_resource type="PackedScene" uid="uid://ct6tn7jqvw0jn" path="res://player.tscn" id="18_beq0j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7fa5p"]
 atlas = ExtResource("6_beq0j")
@@ -537,134 +537,6 @@ size = Vector2(128, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2041"]
 size = Vector2(448, 64)
 
-[sub_resource type="GDScript" id="GDScript_vkktu"]
-script/source = "extends CharacterBody2D
-
-@export var push_force: float = 200.0
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-
-
-func _physics_process(delta: float) -> void:
-	
-	#Add animation 
-	if velocity.x > 1 or velocity.x < -1 : 
-		animated_sprite_2d.animation = \"run\"
-	else : 
-		animated_sprite_2d.animation = \"idle\"
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-		animated_sprite_2d.animation = \"jump\"
-	
-	if Input.is_action_pressed(\"scale up\") :
-		animated_sprite_2d.scale.x += 0.1
-		animated_sprite_2d.scale.y += 0.1
-		collision_shape_2d.scale.x += 0.1
-		collision_shape_2d.scale.y += 0.1
-	elif Input.is_action_pressed(\"scale down\") :
-		animated_sprite_2d.scale.x += -0.1
-		animated_sprite_2d.scale.y += -0.1
-		collision_shape_2d.scale.x += -0.1
-		collision_shape_2d.scale.y += -0.1
-	# Handle jump.
-	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis(\"ui_left\", \"ui_right\")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
-	
-	if direction == 1.0 : 
-		animated_sprite_2d.flip_h = false 
-	elif direction == -1.0 : 
-		animated_sprite_2d.flip_h = true 
-	push_rigid_bodies()
-
-func push_rigid_bodies() -> void:
-	for i in get_slide_collision_count():
-		var collision := get_slide_collision(i)
-		var collider := collision.get_collider()
-		if collider is RigidBody2D:
-			if collider.freeze:
-				continue  # bloc pas poussable actuellement (joueur trop petit)
-			var push_direction := -collision.get_normal()
-			collider.apply_central_impulse(push_direction * push_force)
-"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3l65w"]
-atlas = ExtResource("2_dopym")
-region = Rect2(0, 388, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rjtee"]
-atlas = ExtResource("2_dopym")
-region = Rect2(640, 388, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1idop"]
-atlas = ExtResource("2_dopym")
-region = Rect2(768, 260, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_beq0j"]
-atlas = ExtResource("2_dopym")
-region = Rect2(384, 388, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nauge"]
-atlas = ExtResource("2_dopym")
-region = Rect2(128, 388, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ycv2e"]
-atlas = ExtResource("2_dopym")
-region = Rect2(512, 388, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_j30ru"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3l65w")
-}],
-"loop": 1,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rjtee")
-}],
-"loop": 1,
-"name": &"jump",
-"speed": 3.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1idop")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_beq0j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nauge")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ycv2e")
-}],
-"loop": 1,
-"name": &"run",
-"speed": 8.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7fa5p"]
-radius = 30.0
-
 [node name="Level1" type="Node2D" unique_id=1241748105]
 script = ExtResource("1_crycw")
 metadata/_edit_horizontal_guides_ = [768.0, 45.0]
@@ -855,29 +727,8 @@ position = Vector2(1984, 598)
 [node name="Box" parent="Elements" unique_id=1278369624 instance=ExtResource("9_5j5gb")]
 position = Vector2(1009, 576)
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=854989483 groups=["player"]]
+[node name="Player" parent="." unique_id=1472009076 instance=ExtResource("18_beq0j")]
 position = Vector2(265, 178)
-collision_layer = 2
-collision_mask = 5
-script = SubResource("GDScript_vkktu")
-push_force = 100.0
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=101890984]
-position = Vector2(-163, -163)
-limit_left = 0
-limit_top = 0
-limit_bottom = 768
-position_smoothing_enabled = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=520309190]
-position = Vector2(0, -65)
-sprite_frames = SubResource("SpriteFrames_j30ru")
-animation = &"jump"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1286797294]
-position = Vector2(-1, -31)
-shape = SubResource("CircleShape2D_7fa5p")
 
 [connection signal="pressed" from="HUD/RetryButton" to="." method="_on_retry_button_pressed"]
 
