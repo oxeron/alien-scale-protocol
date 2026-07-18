@@ -7,8 +7,6 @@ extends AnimatableBody2D
 var fall_velocity: float = 0.0
 var is_falling: bool = false
 
-func start_falling() -> void:
-	is_falling = true
 
 func _physics_process(delta: float) -> void:
 	if is_falling:
