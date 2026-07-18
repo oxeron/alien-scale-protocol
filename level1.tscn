@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://c1phpb7rg55rd" path="res://theme.tres" id="3_ootpb"]
 [ext_resource type="Texture2D" uid="uid://c47isw8ns0ylw" path="res://assets/spritesheet-backgrounds-default.png" id="5_v8kj3"]
 [ext_resource type="PackedScene" uid="uid://dy0jgv2iqyu1s" path="res://elements/die_area/die_area.tscn" id="7_i2041"]
+[ext_resource type="PackedScene" uid="uid://bppbpisnn8afi" path="res://elements/button/button.tscn" id="8_xy4tn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bxsck"]
 atlas = ExtResource("5_v8kj3")
@@ -615,7 +616,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fa5p"]
-radius = 50.08992
+radius = 30.0
 
 [node name="Level1" type="Node2D" unique_id=1241748105]
 script = ExtResource("1_crycw")
@@ -695,8 +696,18 @@ position = Vector2(1632, 766)
 position = Vector2(32, 0)
 shape = SubResource("RectangleShape2D_i2041")
 
+[node name="DieArea3" parent="Elements" unique_id=2072846359 instance=ExtResource("7_i2041")]
+position = Vector2(2016, 766)
+
+[node name="CollisionShape2D" parent="Elements/DieArea3" index="0" unique_id=406408250]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_i2041")
+
+[node name="Button" parent="Elements" unique_id=1556884513 instance=ExtResource("8_xy4tn")]
+position = Vector2(704, 576)
+
 [node name="Player" type="CharacterBody2D" parent="." unique_id=854989483 groups=["player"]]
-position = Vector2(189, 391)
+position = Vector2(192, 381)
 collision_layer = 2
 script = SubResource("GDScript_vkktu")
 metadata/_edit_group_ = true
@@ -709,16 +720,17 @@ limit_bottom = 768
 position_smoothing_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=520309190]
-position = Vector2(0, -64)
+position = Vector2(0, -65)
 sprite_frames = SubResource("SpriteFrames_j30ru")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.45550293
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1286797294]
-position = Vector2(0, -50)
+position = Vector2(-1, -31)
 shape = SubResource("CircleShape2D_7fa5p")
 
 [connection signal="pressed" from="HUD/RetryButton" to="." method="_on_retry_button_pressed"]
 
 [editable path="Elements/DieArea2"]
+[editable path="Elements/DieArea3"]

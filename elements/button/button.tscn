@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bppbpisnn8afi"]
+
+[ext_resource type="Script" uid="uid://gfedffbrq6f8" path="res://elements/button/button.gd" id="1_6l8wf"]
+[ext_resource type="Texture2D" uid="uid://oafuxcofns2s" path="res://assets/spritesheet-tiles-default.png" id="1_vc2ot"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l8wf"]
+atlas = ExtResource("1_vc2ot")
+region = Rect2(260, 455, 64, 64)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6l8wf"]
+load_path = "res://.godot/imported/spritesheet-tiles-default.png-8936ea325e1d26a393e73b7d27b73b89.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmonl"]
+atlas = SubResource("CompressedTexture2D_6l8wf")
+region = Rect2(325, 455, 64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fa5p"]
+size = Vector2(64, 41)
+
+[node name="Button" type="Area2D" unique_id=1556884513]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_6l8wf")
+off_state_texture = SubResource("AtlasTexture_6l8wf")
+on_state_texture = SubResource("AtlasTexture_tmonl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1513824500]
+position = Vector2(0, -32)
+region_rect = Rect2(260, 455, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1093329621]
+position = Vector2(0, -20.5)
+shape = SubResource("RectangleShape2D_7fa5p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
