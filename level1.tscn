@@ -716,17 +716,20 @@ position = Vector2(192, 0)
 shape = SubResource("RectangleShape2D_i2041")
 
 [node name="Button" parent="Elements" unique_id=1556884513 node_paths=PackedStringArray("target") instance=ExtResource("8_xy4tn")]
-position = Vector2(1148, 576)
+position = Vector2(1148, 577)
 target = NodePath("../ExtensiblePlatform")
 keep_pressed = true
+player_minimal_scale = 1.0
 
 [node name="Button2" parent="Elements" unique_id=1607435186 node_paths=PackedStringArray("target") instance=ExtResource("8_xy4tn")]
 position = Vector2(1935, 576)
 target = NodePath("../ExtensiblePlatform")
 keep_pressed = false
+player_minimal_scale = 1.0
 
 [node name="ExtensiblePlatform" parent="Elements" unique_id=334852578 instance=ExtResource("8_usj0q")]
-position = Vector2(1984, 598)
+position = Vector2(1985, 598)
+player_maximal_scale = 0.5
 
 [node name="Box" parent="Elements" unique_id=1278369624 instance=ExtResource("9_5j5gb")]
 position = Vector2(1009, 576)
@@ -745,7 +748,7 @@ scale = Vector2(2, 2)
 position = Vector2(540, 512)
 
 [node name="Player" parent="." unique_id=1472009076 instance=ExtResource("18_beq0j")]
-position = Vector2(265, 178)
+position = Vector2(1941, 519)
 push_force = 80.0
 
 [connection signal="pressed" from="HUD/RetryButton" to="." method="_on_retry_button_pressed"]
