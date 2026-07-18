@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c47isw8ns0ylw" path="res://assets/spritesheet-backgrounds-default.png" id="5_v8kj3"]
 [ext_resource type="Texture2D" uid="uid://c65kjwdftfl71" path="res://assets/platformerPack_industrial_tilesheet.png" id="6_beq0j"]
 [ext_resource type="PackedScene" uid="uid://dy0jgv2iqyu1s" path="res://elements/die_area/die_area.tscn" id="7_i2041"]
+[ext_resource type="Texture2D" uid="uid://b4xtyl1v3owqm" path="res://assets/UI/button_square_header_blade_rectangle_screws.png" id="7_ycv2e"]
 [ext_resource type="PackedScene" uid="uid://dp8ac5fhec1em" path="res://elements/platforms/extensible_platform/extensible_platform.tscn" id="8_usj0q"]
 [ext_resource type="PackedScene" uid="uid://bppbpisnn8afi" path="res://elements/button/button.tscn" id="8_xy4tn"]
 [ext_resource type="PackedScene" uid="uid://bs16ee3q28ahw" path="res://elements/box/box.tscn" id="9_5j5gb"]
@@ -23,6 +24,11 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_7fa5p"]
 atlas = ExtResource("6_beq0j")
 region = Rect2(500, 490, 50, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nauge"]
+atlas = ExtResource("5_v8kj3")
+region = Rect2(0, 0, 256, 256)
+filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bxsck"]
 atlas = ExtResource("5_v8kj3")
@@ -532,18 +538,21 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/3 = SubResource("TileSetAtlasSource_dopym")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5j5gb"]
-size = Vector2(128, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3l65w"]
+size = Vector2(3584, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2041"]
-size = Vector2(448, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fa5p"]
+size = Vector2(64, 300)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nauge"]
-size = Vector2(128, 128)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycv2e"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1idop"]
+size = Vector2(127, 123)
 
 [node name="Level1" type="Node2D" unique_id=1241748105]
 script = ExtResource("1_crycw")
-metadata/_edit_horizontal_guides_ = [768.0, 45.0]
+metadata/_edit_horizontal_guides_ = [770.0, 90.0]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1634653022]
 
@@ -589,11 +598,43 @@ texture_under = ExtResource("4_1idop")
 texture_progress = ExtResource("5_beq0j")
 
 [node name="TextureRect" type="TextureRect" parent="HUD" unique_id=481853614]
-offset_left = 95.00001
-offset_right = 145.0
-offset_bottom = 70.0
-rotation = 0.40212166
+offset_left = 98.00001
+offset_top = 24.0
+offset_right = 148.0
+offset_bottom = 94.0
+scale = Vector2(0.6, 0.6)
 texture = SubResource("AtlasTexture_7fa5p")
+
+[node name="EndGame" type="NinePatchRect" parent="HUD" unique_id=868592377]
+offset_left = 288.0
+offset_top = 136.0
+offset_right = 1166.0
+offset_bottom = 504.0
+texture = ExtResource("7_ycv2e")
+patch_margin_left = 19
+patch_margin_top = 39
+patch_margin_right = 16
+patch_margin_bottom = 19
+
+[node name="EndGameLabel" type="Label" parent="HUD/EndGame" unique_id=1329762373]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 47.0
+offset_right = 30.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ootpb")
+theme_override_colors/font_color = Color(0.18783906, 0.3669577, 0.3941384, 1)
+text = "TRAINING COMPLETED IN 00:00:00 
+ AND 24 RETRIES.
+Excellent work, XR-01.
+Access Key secured.
+Exit reached.
+Scale Protocol APPROVED."
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=801850366]
 layer = -2
@@ -601,6 +642,27 @@ layer = -2
 [node name="ColorRect" type="ColorRect" parent="Background" unique_id=1802169228]
 offset_right = 1280.0
 offset_bottom = 720.0
+
+[node name="Sprite2D4" type="TextureRect" parent="Background" unique_id=1195843307]
+offset_left = 1.0
+offset_top = -199.0
+offset_right = 485.0
+offset_bottom = 291.0
+texture = SubResource("AtlasTexture_nauge")
+
+[node name="Sprite2D6" type="TextureRect" parent="Background" unique_id=207396340]
+offset_left = 968.0
+offset_top = -199.0
+offset_right = 1452.0
+offset_bottom = 291.0
+texture = SubResource("AtlasTexture_nauge")
+
+[node name="Sprite2D5" type="TextureRect" parent="Background" unique_id=782583337]
+offset_left = 485.0
+offset_top = -199.0
+offset_right = 969.0
+offset_bottom = 291.0
+texture = SubResource("AtlasTexture_nauge")
 
 [node name="Sprite2D" type="TextureRect" parent="Background" unique_id=1422764152]
 offset_left = -1.0
@@ -624,32 +686,68 @@ offset_bottom = 723.0
 texture = SubResource("AtlasTexture_bxsck")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2056656765]
-tile_map_data = PackedByteArray("AAAAAAkAAwALAAkAAAABAAkAAwALAAkAAAACAAkAAwALAAkAAAADAAkAAwALAAkAAAAEAAkAAwALAAkAAAAFAAkAAwALAAkAAAAGAAkAAwALAAkAAAAHAAkAAwALAAkAAAAIAAkAAwALAAkAAAAJAAkAAwALAAkAAAAKAAkAAwALAAkAAAALAAkAAwALAAkAAAAMAAkAAwALAAkAAAANAAkAAwALAAkAAAAOAAkAAwALAAkAAAAPAAkAAwALAAkAAAAQAAkAAwALAAkAAAARAAkAAwALAAkAAAASAAkAAwALAAkAAAATAAkAAwANAAkAAAAGAAgAAwAMAAkAAAAHAAgAAwALAAkAAAAIAAgAAwANAAkAAAAAAAoAAwAKAAwAAAABAAoAAwAKAAwAAAACAAoAAwAKAAwAAAADAAoAAwAKAAwAAAAEAAoAAwAKAAwAAAAFAAoAAwAKAAwAAAAGAAoAAwAKAAwAAAAHAAoAAwAKAAwAAAAIAAoAAwAKAAwAAAAJAAoAAwAKAAwAAAAKAAoAAwAKAAwAAAALAAoAAwAKAAwAAAAMAAoAAwAKAAwAAAANAAoAAwAKAAwAAAAOAAoAAwAKAAwAAAAPAAoAAwAKAAwAAAAQAAoAAwAKAAwAAAARAAoAAwAKAAwAAAASAAoAAwAKAAwAAAATAAoAAwAMAAwAAAATAAsAAwAMAAwAAAASAAsAAwAKAAwAAAARAAsAAwAKAAwAAAAQAAsAAwAKAAwAAAAPAAsAAwAKAAwAAAAOAAsAAwAKAAwAAAANAAsAAwAKAAwAAAAMAAsAAwAKAAwAAAALAAsAAwAKAAwAAAAKAAsAAwAKAAwAAAAJAAsAAwAKAAwAAAAIAAsAAwAKAAwAAAAHAAsAAwAKAAwAAAAGAAsAAwAKAAwAAAAAAAsAAwAKAAwAAAABAAsAAwAKAAwAAAACAAsAAwAKAAwAAAADAAsAAwAKAAwAAAAEAAsAAwAKAAwAAAAFAAsAAwAKAAwAAAAAAAgAAwAKAAkAAAAAAAcAAwAKAAkAAAAAAAYAAwAKAAkAAAAAAAUAAwAKAAkAAAAAAAQAAwAKAAkAAAAAAAMAAwAKAAkAAAAAAAIAAwAKAAkAAAAAAAEAAwAKAAkAAAAAAAAAAwAKAAkAAAAAAAwAAwAKAAwAAAABAAwAAwAKAAwAAAACAAwAAwAKAAwAAAADAAwAAwAKAAwAAAAEAAwAAwAKAAwAAAAFAAwAAwAKAAwAAAAGAAwAAwAKAAwAAAAHAAwAAwAKAAwAAAAIAAwAAwAKAAwAAAAJAAwAAwAKAAwAAAAKAAwAAwAKAAwAAAALAAwAAwAKAAwAAAAMAAwAAwAKAAwAAAANAAwAAwAKAAwAAAAOAAwAAwAKAAwAAAAPAAwAAwAKAAwAAAAQAAwAAwAKAAwAAAARAAwAAwAKAAwAAAASAAwAAwAKAAwAAAATAAwAAwAMAAwAAAAVAAkAAwAMAAkAAAAWAAkAAwALAAkAAAAXAAkAAwALAAkAAAAYAAkAAwANAAkAAAAbAAkAAwAMAAkAAAAcAAkAAwALAAkAAAAdAAkAAwALAAkAAAAeAAkAAwANAAkAAAAXAAoAAwAKAAwAAAAXAAsAAwAKAAwAAAAXAAwAAwAKAAwAAAAYAAoAAwAMAAwAAAAYAAsAAwAMAAwAAAAYAAwAAwAMAAwAAAAdAAoAAwAKAAwAAAAdAAsAAwAKAAwAAAAdAAwAAwAKAAwAAAAeAAoAAwAMAAwAAAAeAAsAAwAMAAwAAAAeAAwAAwAMAAwAAAAWAAoAAwAKAAwAAAAWAAsAAwAKAAwAAAAWAAwAAwAKAAwAAAAcAAoAAwAKAAwAAAAcAAsAAwAKAAwAAAAcAAwAAwAKAAwAAAAVAAoAAwAJAAkAAAAVAAsAAwAJAAkAAAAVAAwAAwAJAAkAAAAbAAoAAwAJAAkAAAAbAAsAAwAJAAkAAAAbAAwAAwAJAAkAAAAUAAsAAwAAAAcAAAAZAAsAAwAAAAcAAAAaAAsAAwAAAAcAAAAfAAsAAwAAAAcAAAAgAAsAAwAAAAcAAAAmAAkAAwAMAAkAAAAmAAoAAwAJAAkAAAAmAAsAAwAJAAkAAAAmAAwAAwAJAAkAAAAnAAkAAwALAAkAAAAnAAoAAwAKAAwAAAAnAAsAAwAKAAwAAAAnAAwAAwAKAAwAAAAoAAkAAwALAAkAAAAoAAoAAwAKAAwAAAAoAAsAAwAKAAwAAAAoAAwAAwAKAAwAAAApAAkAAwANAAkAAAApAAoAAwAMAAwAAAApAAsAAwAMAAwAAAApAAwAAwAMAAwAAAAmAAcAAwAIAAwAAAApAAcAAwAJAAwAAAAnAAcAAwAHAAwAAAAoAAcAAwAHAAwAAAAmAAYAAwALAAwAAAAmAAUAAwALAAwAAAAmAAQAAwALAAwAAAAmAAMAAwALAAwAAAAmAAIAAwALAAwAAAAmAAEAAwALAAwAAAAmAAAAAwALAAwAAAApAAYAAwAMAAwAAAApAAUAAwAMAAwAAAApAAQAAwAMAAwAAAApAAMAAwAMAAwAAAApAAIAAwAMAAwAAAApAAEAAwAMAAwAAAApAAAAAwAMAAwAAAAnAAYAAwAKAAwAAAAoAAYAAwAKAAwAAAAoAAUAAwAKAAwAAAAnAAUAAwAKAAwAAAAnAAQAAwAKAAwAAAAoAAMAAwAKAAwAAAAoAAQAAwAKAAwAAAAnAAMAAwAKAAwAAAAnAAIAAwAKAAwAAAAnAAEAAwAKAAwAAAAnAAAAAwAKAAwAAAAoAAAAAwAKAAwAAAAoAAEAAwAKAAwAAAAoAAIAAwAKAAwAAAACAAgAAwAQAAYAAAAhAAsAAwAAAAcAAAAiAAsAAwAAAAcAAAAjAAsAAwAAAAcAAAAkAAsAAwAAAAcAAAAlAAsAAwAAAAcAAAALAAgAAwANAAEAAAAWAAgAAwAOAAEAAAAFAAgAAwAHAAMAAAALAAQAAwAJAAEAAAAOAAUAAwAKAAEAAAAcAAgAAwAIAAMAAAA=")
+position = Vector2(0, 1)
+tile_map_data = PackedByteArray("AAAAAAkAAwALAAkAAAABAAkAAwALAAkAAAACAAkAAwALAAkAAAADAAkAAwALAAkAAAAEAAkAAwALAAkAAAAFAAkAAwALAAkAAAAGAAkAAwALAAkAAAAHAAkAAwALAAkAAAAIAAkAAwALAAkAAAAJAAkAAwALAAkAAAAKAAkAAwALAAkAAAALAAkAAwALAAkAAAAMAAkAAwALAAkAAAANAAkAAwALAAkAAAAOAAkAAwALAAkAAAAPAAkAAwALAAkAAAAQAAkAAwALAAkAAAARAAkAAwALAAkAAAASAAkAAwALAAkAAAAAAAoAAwAKAAwAAAABAAoAAwAKAAwAAAACAAoAAwAKAAwAAAADAAoAAwAKAAwAAAAEAAoAAwAKAAwAAAAFAAoAAwAKAAwAAAAGAAoAAwAKAAwAAAAHAAoAAwAKAAwAAAAIAAoAAwAKAAwAAAAJAAoAAwAKAAwAAAAKAAoAAwAKAAwAAAALAAoAAwAKAAwAAAAMAAoAAwAKAAwAAAANAAoAAwAKAAwAAAAOAAoAAwAKAAwAAAAPAAoAAwAKAAwAAAAQAAoAAwAKAAwAAAARAAoAAwAKAAwAAAASAAoAAwAKAAwAAAASAAsAAwAKAAwAAAARAAsAAwAKAAwAAAAQAAsAAwAKAAwAAAAPAAsAAwAKAAwAAAAOAAsAAwAKAAwAAAANAAsAAwAKAAwAAAAMAAsAAwAKAAwAAAALAAsAAwAKAAwAAAAKAAsAAwAKAAwAAAAJAAsAAwAKAAwAAAAIAAsAAwAKAAwAAAAHAAsAAwAKAAwAAAAGAAsAAwAKAAwAAAAAAAsAAwAKAAwAAAABAAsAAwAKAAwAAAACAAsAAwAKAAwAAAADAAsAAwAKAAwAAAAEAAsAAwAKAAwAAAAFAAsAAwAKAAwAAAAAAAgAAwAKAAkAAAAAAAcAAwAKAAkAAAAAAAYAAwAKAAkAAAAAAAUAAwAKAAkAAAAAAAQAAwAKAAkAAAAAAAMAAwAKAAkAAAAAAAIAAwAKAAkAAAAAAAEAAwAKAAkAAAAAAAAAAwAKAAkAAAAAAAwAAwAKAAwAAAABAAwAAwAKAAwAAAACAAwAAwAKAAwAAAADAAwAAwAKAAwAAAAEAAwAAwAKAAwAAAAFAAwAAwAKAAwAAAAGAAwAAwAKAAwAAAAHAAwAAwAKAAwAAAAIAAwAAwAKAAwAAAAJAAwAAwAKAAwAAAAKAAwAAwAKAAwAAAALAAwAAwAKAAwAAAAMAAwAAwAKAAwAAAANAAwAAwAKAAwAAAAOAAwAAwAKAAwAAAAPAAwAAwAKAAwAAAAQAAwAAwAKAAwAAAARAAwAAwAKAAwAAAASAAwAAwAKAAwAAAACAAgAAwAQAAYAAAALAAgAAwANAAEAAAAFAAgAAwAHAAMAAAALAAQAAwAJAAEAAAAUAAgAAwAMAAkAAAAVAAgAAwALAAkAAAAWAAgAAwANAAkAAAAUAAkAAwAJAAkAAAAUAAoAAwAJAAkAAAAUAAsAAwAJAAkAAAAUAAwAAwAJAAkAAAATAAkAAwALAAkAAAATAAoAAwAKAAwAAAATAAsAAwAKAAwAAAATAAwAAwAKAAwAAAAWAAkAAwAMAAwAAAAWAAoAAwAMAAwAAAAWAAsAAwAMAAwAAAAVAAkAAwAKAAwAAAAVAAoAAwAKAAwAAAAVAAsAAwAKAAwAAAAVAAwAAwAKAAwAAAAWAAwAAwAMAAwAAAAYAAkAAwANAAkAAAAYAAoAAwAMAAwAAAAYAAsAAwAMAAwAAAAYAAwAAwAMAAwAAAAXAAkAAwALAAkAAAAXAAoAAwAKAAwAAAAXAAsAAwAKAAwAAAAXAAwAAwAIAAkAAAAYAAgAAwAOAAEAAAAcAAsAAwAKAAwAAAAeAAoAAwALAAkAAAAeAAwAAwAKAAwAAAAfAAoAAwANAAkAAAAfAAsAAwAMAAwAAAAgAAkAAwALAAkAAAAgAAoAAwAKAAwAAAAgAAsAAwAKAAwAAAAgAAwAAwAKAAwAAAAhAAkAAwALAAkAAAAhAAoAAwAKAAwAAAAhAAsAAwAKAAwAAAAhAAwAAwAKAAwAAAAdAAoAAwALAAkAAAAdAAsAAwAKAAwAAAAdAAwAAwAKAAwAAAAaAAoAAwALAAkAAAAaAAsAAwAKAAwAAAAaAAwAAwAKAAwAAAAZAAsAAwAKAAwAAAAZAAwAAwAKAAwAAAAbAAsAAwAKAAwAAAAfAAkAAwAMAAkAAAAfAAwAAwAMAAwAAAAiAAkAAwALAAkAAAAiAAoAAwAKAAwAAAAiAAsAAwAKAAwAAAAiAAwAAwAKAAwAAAAjAAkAAwALAAkAAAAjAAoAAwAKAAwAAAAjAAsAAwAKAAwAAAAjAAwAAwAKAAwAAAAkAAkAAwALAAkAAAAkAAoAAwAKAAwAAAAkAAsAAwAKAAwAAAAkAAwAAwAKAAwAAAAlAAkAAwALAAkAAAAlAAoAAwAKAAwAAAAlAAsAAwAKAAwAAAAlAAwAAwAKAAwAAAAmAAkAAwALAAkAAAAmAAoAAwAKAAwAAAAmAAsAAwAKAAwAAAAmAAwAAwAKAAwAAAAnAAkAAwALAAkAAAAnAAoAAwAKAAwAAAAnAAsAAwAKAAwAAAAnAAwAAwAKAAwAAAAoAAkAAwALAAkAAAAoAAoAAwAKAAwAAAAoAAsAAwAKAAwAAAAoAAwAAwAKAAwAAAApAAkAAwALAAkAAAApAAoAAwAKAAwAAAApAAsAAwAKAAwAAAApAAwAAwAKAAwAAAAqAAkAAwALAAkAAAAqAAoAAwAKAAwAAAAqAAsAAwAKAAwAAAAqAAwAAwAKAAwAAAArAAkAAwALAAkAAAArAAoAAwAKAAwAAAArAAsAAwAKAAwAAAArAAwAAwAKAAwAAAAsAAkAAwANAAkAAAAsAAoAAwAMAAwAAAAsAAsAAwAMAAwAAAAsAAwAAwAMAAwAAAAQAAUAAwAKAAEAAAApAAgAAwAMAAIAAAAZAAoAAwALAAkAAAAuAAcAAwAQAAkAAAAwAAcAAwARAAkAAAAxAAcAAwARAAkAAAAyAAcAAwAAAAoAAAAvAAcAAwARAAkAAAAxAAUAAwAQAAkAAAAyAAUAAwARAAkAAAAzAAUAAwARAAkAAAA0AAUAAwARAAkAAAA1AAUAAwAAAAoAAAAtAAMAAwAQAAkAAAAuAAMAAwARAAkAAAAvAAMAAwAAAAoAAAA5AAgAAwAIAAwAAAA6AAgAAwAHAAwAAAA7AAgAAwAHAAwAAAA8AAgAAwAHAAwAAAA9AAgAAwAJAAwAAAA5AAcAAwALAAwAAAA5AAYAAwALAAwAAAA5AAUAAwALAAwAAAA5AAQAAwALAAwAAAA5AAMAAwALAAwAAAA5AAIAAwALAAwAAAA5AAEAAwALAAwAAAA5AAAAAwALAAwAAAA5AP7/AwALAAwAAAA5AP//AwALAAwAAAA5AP3/AwALAAwAAAA9AAcAAwAMAAwAAAA9AAUAAwANAAkAAAA9AAYAAwAMAAwAAAA9AAIAAwAHAAkAAAA9AAEAAwAMAAwAAAA9AAAAAwAMAAwAAAA9AP//AwAMAAwAAAA9AP7/AwAMAAwAAAA9AP3/AwAMAAwAAAA6AAcAAwAKAAwAAAA8AAcAAwAKAAwAAAA7AAcAAwAKAAwAAAA7AAYAAwAKAAwAAAA6AAUAAwAKAAwAAAA6AAYAAwAKAAwAAAA8AAYAAwAKAAwAAAA8AAUAAwAMAAkAAAA7AAUAAwAKAAwAAAA7AAQAAwAMAAwAAAA6AP3/AwAKAAwAAAA6AP7/AwAKAAwAAAA7AP//AwAKAAwAAAA7AAAAAwAKAAwAAAA7AAIAAwAKAAwAAAA6AP//AwAKAAwAAAA6AAAAAwAKAAwAAAA6AAEAAwAKAAwAAAA6AAIAAwAKAAwAAAA6AAMAAwAKAAwAAAA6AAQAAwAKAAwAAAA7AP3/AwAKAAwAAAA7AP7/AwAKAAwAAAA7AAMAAwAMAAwAAAA8AP3/AwAKAAwAAAA8AP7/AwAKAAwAAAA8AP//AwAKAAwAAAA8AAAAAwAKAAwAAAA8AAEAAwAKAAwAAAA8AAIAAwAFAAkAAAAxAAoAAwAMAAkAAAAxAAsAAwAJAAkAAAAxAAwAAwAJAAkAAAAyAAoAAwALAAkAAAAyAAsAAwAKAAwAAAAyAAwAAwAKAAwAAAAzAAoAAwANAAkAAAAzAAsAAwAMAAwAAAAzAAwAAwAMAAwAAAA4AAoAAwALAAkAAAA4AAsAAwAKAAwAAAA4AAwAAwAKAAwAAAA5AAoAAwALAAkAAAA5AAsAAwAKAAwAAAA5AAwAAwAKAAwAAAA6AAoAAwALAAkAAAA6AAsAAwAKAAwAAAA6AAwAAwAKAAwAAAA3AAoAAwAMAAkAAAA3AAsAAwAJAAkAAAA3AAwAAwAJAAkAAAA7AAoAAwALAAkAAAA7AAsAAwAKAAwAAAA7AAwAAwAKAAwAAAA9AAoAAwALAAkAAAA9AAsAAwAKAAwAAAA9AAwAAwAKAAwAAAA8AAoAAwALAAkAAAA8AAsAAwAKAAwAAAA8AAwAAwAKAAwAAAA+AAoAAwALAAkAAAA+AAsAAwAKAAwAAAA+AAwAAwAKAAwAAAA/AAoAAwALAAkAAAA/AAsAAwAKAAwAAAA/AAwAAwAKAAwAAABAAAoAAwALAAkAAABAAAsAAwAKAAwAAABAAAwAAwAKAAwAAAAtAAsAAwAQAAUAAAAuAAsAAwAQAAUAAAAvAAsAAwAQAAUAAAAwAAsAAwAQAAUAAAA0AAsAAwAQAAUAAAA1AAsAAwAQAAUAAAA2AAsAAwAQAAUAAABBAAgAAwAMAAkAAABBAAkAAwAJAAkAAABBAAoAAwAJAAkAAABBAAsAAwAJAAkAAABCAAgAAwALAAkAAABCAAkAAwAIAAkAAABCAAoAAwAIAAkAAABCAAsAAwAIAAkAAABDAAgAAwALAAkAAABDAAkAAwAIAAkAAABDAAoAAwAIAAkAAABDAAsAAwAIAAkAAABEAAgAAwALAAkAAABEAAkAAwAIAAkAAABEAAoAAwAIAAkAAABEAAsAAwAIAAkAAABBAAwAAwAJAAkAAABCAAwAAwAIAAkAAABDAAwAAwAIAAkAAABEAAwAAwAIAAkAAAA7AAEAAwAKAAwAAABFAAgAAwALAAkAAABFAAkAAwAIAAkAAABFAAoAAwAIAAkAAABFAAsAAwAIAAkAAABFAAwAAwAIAAkAAABGAAgAAwALAAkAAABGAAkAAwAIAAkAAABGAAoAAwAIAAkAAABGAAsAAwAIAAkAAABGAAwAAwAIAAkAAABHAAgAAwALAAkAAABHAAkAAwAIAAkAAABHAAoAAwAIAAkAAABHAAsAAwAIAAkAAABHAAwAAwAIAAkAAABIAAgAAwALAAkAAABIAAkAAwAIAAkAAABIAAoAAwAIAAkAAABIAAsAAwAIAAkAAABIAAwAAwAIAAkAAABJAAgAAwALAAkAAABJAAkAAwAIAAkAAABJAAoAAwAIAAkAAABJAAsAAwAIAAkAAABJAAwAAwAIAAkAAABKAAgAAwALAAkAAABKAAkAAwAIAAkAAABKAAoAAwAIAAkAAABKAAsAAwAIAAkAAABKAAwAAwAIAAkAAABLAAgAAwANAAkAAABLAAkAAwAKAAkAAABLAAoAAwAKAAkAAABLAAsAAwAKAAkAAABLAAwAAwAKAAkAAABMAAsAAwAAAAcAAABNAAsAAwAAAAcAAABOAAsAAwAAAAcAAABPAAsAAwAAAAcAAABQAAsAAwAAAAcAAABRAAsAAwAAAAcAAABSAAsAAwAAAAcAAABCAAcAAwAIAAMAAAA0AAQAAwANAAEAAAAyAAkAAwAHAAMAAAAiAAgAAwAIAAMAAAAVAAcAAwAIAAMAAAAoAAgAAwAGAAYAAAAvAAYAAwAHAAYAAABLAAcAAwAGAAYAAABTAAgAAwAMAAkAAABTAAkAAwAJAAkAAABTAAoAAwAJAAkAAABTAAsAAwAJAAkAAABTAAwAAwAJAAkAAABUAAgAAwALAAkAAABUAAkAAwAIAAkAAABUAAoAAwAIAAkAAABUAAsAAwAIAAkAAABUAAwAAwAIAAkAAABVAAgAAwALAAkAAABVAAkAAwAIAAkAAABVAAoAAwAIAAkAAABVAAsAAwAIAAkAAABVAAwAAwAIAAkAAABWAAgAAwALAAkAAABWAAkAAwAIAAkAAABWAAoAAwAIAAkAAABWAAsAAwAIAAkAAABWAAwAAwAIAAkAAABXAP3/AwALAAwAAABXAP7/AwALAAwAAABXAP//AwALAAwAAABXAAAAAwALAAwAAABXAAEAAwALAAwAAABXAAIAAwALAAwAAABXAAMAAwALAAwAAABXAAYAAwAMAAkAAABXAAgAAwAJAAkAAABYAP3/AwAKAAwAAABYAP7/AwAKAAwAAABYAP//AwAKAAwAAABYAAAAAwAKAAwAAABYAAEAAwAKAAwAAABYAAIAAwAKAAwAAABYAAMAAwAKAAwAAABYAAYAAwALAAkAAABYAAcAAwAIAAkAAABYAAgAAwAIAAkAAABZAP3/AwAKAAwAAABZAP7/AwAKAAwAAABZAP//AwAKAAwAAABZAAAAAwAKAAwAAABZAAEAAwAKAAwAAABZAAIAAwAKAAwAAABZAAMAAwAKAAwAAABZAAYAAwALAAkAAABZAAcAAwAIAAkAAABZAAgAAwAIAAkAAABaAP3/AwAMAAwAAABaAP7/AwAMAAwAAABaAP//AwAMAAwAAABaAAAAAwAMAAwAAABaAAEAAwAMAAwAAABaAAIAAwAMAAwAAABaAAMAAwAMAAwAAABaAAYAAwANAAkAAABaAAcAAwAKAAkAAABaAAgAAwAKAAkAAABXAAQAAwAIAAwAAABXAAkAAwAJAAkAAABYAAQAAwAHAAwAAABYAAkAAwAIAAkAAABZAAQAAwAHAAwAAABZAAkAAwAIAAkAAABaAAQAAwAJAAwAAABaAAkAAwAKAAkAAABXAAcAAwAJAAkAAABXAAoAAwAJAAkAAABXAAsAAwAJAAkAAABXAAwAAwAJAAkAAABYAAoAAwAIAAkAAABYAAsAAwAIAAkAAABYAAwAAwAIAAkAAABZAAoAAwAIAAkAAABZAAsAAwAIAAkAAABZAAwAAwAIAAkAAABaAAoAAwAKAAkAAABaAAsAAwAKAAkAAABaAAwAAwAKAAkAAAAtAAwAAwAOAAUAAAAuAAwAAwAOAAUAAAAvAAwAAwAOAAUAAAAwAAwAAwAOAAUAAAA0AAwAAwAOAAUAAAA1AAwAAwAOAAUAAAA2AAwAAwAOAAUAAAA3AAEAAwAJAAEAAAAUAAIAAwAJAAEAAAAmAAIAAwAKAAEAAABJAAIAAwAJAAEAAABaAAUAAwARAAIAAAAvAAIAAwAIAAMAAAAcAAoAAwALAAkAAAAbAAoAAwALAAkAAAAeAAsAAwAKAAwAAAAbAAwAAwAKAAwAAAAcAAwAAwAKAAwAAAA=")
 tile_set = SubResource("TileSet_lgp48")
 collision_visibility_mode = 1
 
-[node name="Keys" type="Node2D" parent="." unique_id=971697438]
+[node name="Informations" type="Node2D" parent="." unique_id=971697438]
 z_index = -1
+metadata/_edit_lock_ = true
 
-[node name="KeyboardArrowLeftOutline" type="Sprite2D" parent="Keys" unique_id=1722693770]
+[node name="Introduction1" type="Label" parent="Informations" unique_id=1860101090]
+offset_left = 125.0
+offset_top = 135.0
+offset_right = 1231.0
+offset_bottom = 612.0
+theme = ExtResource("3_ootpb")
+theme_override_colors/font_color = Color(0.18783906, 0.3669577, 0.3941384, 1)
+text = "ALIEN BOOT CAMP
+TRAINING SESSION #01
+UNIT: XR-01
+STATUS: READY
+MISSION:
+      RETRIEVE THE ACCESS KEY
+      AND REACH THE EXIT."
+
+[node name="Introduction2" type="Label" parent="Informations" unique_id=1380213849]
+offset_left = 1637.0
+offset_top = 113.0
+offset_right = 2897.0
+offset_bottom = 638.0
+theme = ExtResource("3_ootpb")
+theme_override_colors/font_color = Color(0.18783906, 0.3669577, 0.3941384, 1)
+text = "COMPLETE THE COURSE
+AS FAST AS POSSIBLE
+WITH THE FEWEST RETRIES.
+
+IF YOU GET STUCK, USE THE RETRY BUTTON
+IN THE TOP-RIGHT CORNER.
+
+SCALE PROTOCOL ENABLED.
+
+GOOD LUCK !"
+
+[node name="KeyboardArrowLeftOutline" type="Sprite2D" parent="Informations" unique_id=1722693770]
 modulate = Color(0.6862745, 0.043137256, 0.16470589, 1)
-position = Vector2(117, 241)
+position = Vector2(818, 228)
 texture = ExtResource("11_hx44q")
 
-[node name="Label" type="Label" parent="Keys/KeyboardArrowLeftOutline" unique_id=630227092]
+[node name="Label" type="Label" parent="Informations/KeyboardArrowLeftOutline" unique_id=630227092]
 offset_left = 29.0
 offset_top = -22.0
 offset_right = 318.0
 offset_bottom = 23.0
 theme = ExtResource("3_ootpb")
 text = "Move left"
+metadata/_edit_use_anchors_ = true
 
-[node name="KeyboardArrowRightOutline" type="Sprite2D" parent="Keys" unique_id=1551625175]
+[node name="KeyboardArrowRightOutline" type="Sprite2D" parent="Informations" unique_id=1551625175]
 modulate = Color(0.68603534, 0.043691486, 0.16579124, 1)
-position = Vector2(167, 301)
+position = Vector2(868, 288)
 texture = ExtResource("12_n8vhr")
 
-[node name="Label" type="Label" parent="Keys/KeyboardArrowRightOutline" unique_id=1387577922]
+[node name="Label" type="Label" parent="Informations/KeyboardArrowRightOutline" unique_id=1387577922]
 offset_left = 30.0
 offset_top = -22.0
 offset_right = 332.0
@@ -657,12 +755,12 @@ offset_bottom = 23.0
 theme = ExtResource("3_ootpb")
 text = "Move right"
 
-[node name="KeyboardSpaceOutline" type="Sprite2D" parent="Keys" unique_id=199959405]
+[node name="KeyboardSpaceOutline" type="Sprite2D" parent="Informations" unique_id=199959405]
 modulate = Color(0.6862745, 0.043137256, 0.16470589, 1)
-position = Vector2(320, 417)
+position = Vector2(1327, 332)
 texture = ExtResource("13_n8vhr")
 
-[node name="Label" type="Label" parent="Keys/KeyboardSpaceOutline" unique_id=295905111]
+[node name="Label" type="Label" parent="Informations/KeyboardSpaceOutline" unique_id=295905111]
 offset_left = 30.0
 offset_top = -23.0
 offset_right = 332.0
@@ -670,12 +768,12 @@ offset_bottom = 22.0
 theme = ExtResource("3_ootpb")
 text = "Jump"
 
-[node name="KeyboardArrowDownOutline" type="Sprite2D" parent="Keys" unique_id=1053760932]
+[node name="KeyboardArrowDownOutline" type="Sprite2D" parent="Informations" unique_id=1053760932]
 modulate = Color(0.6862745, 0.043137256, 0.16470589, 1)
-position = Vector2(2052, 494)
+position = Vector2(3612, 608)
 texture = ExtResource("9_eqrsh")
 
-[node name="Label" type="Label" parent="Keys/KeyboardArrowDownOutline" unique_id=216914705]
+[node name="Label" type="Label" parent="Informations/KeyboardArrowDownOutline" unique_id=216914705]
 offset_left = 30.0
 offset_top = -24.0
 offset_right = 319.0
@@ -683,12 +781,12 @@ offset_bottom = 21.0
 theme = ExtResource("3_ootpb")
 text = "Scale down"
 
-[node name="KeyboardArrowUpOutline" type="Sprite2D" parent="Keys" unique_id=374095124]
+[node name="KeyboardArrowUpOutline" type="Sprite2D" parent="Informations" unique_id=374095124]
 modulate = Color(0.6862745, 0.043137256, 0.16470589, 1)
-position = Vector2(700, 479)
+position = Vector2(4308, 241)
 texture = ExtResource("10_3l65w")
 
-[node name="Label" type="Label" parent="Keys/KeyboardArrowUpOutline" unique_id=1100758354]
+[node name="Label" type="Label" parent="Informations/KeyboardArrowUpOutline" unique_id=1100758354]
 offset_left = 30.0
 offset_top = -24.0
 offset_right = 319.0
@@ -699,60 +797,65 @@ text = "Scale UP"
 [node name="Elements" type="Node2D" parent="." unique_id=1140752181]
 
 [node name="DieArea" parent="Elements" unique_id=533860757 instance=ExtResource("7_i2041")]
-position = Vector2(1312, 766)
+position = Vector2(1760, 766)
 
-[node name="DieArea2" parent="Elements" unique_id=1485121319 instance=ExtResource("7_i2041")]
-position = Vector2(1632, 766)
+[node name="CollisionShape2D" parent="Elements/DieArea" index="0" unique_id=406408250]
+position = Vector2(1760, 0)
+shape = SubResource("RectangleShape2D_3l65w")
 
-[node name="CollisionShape2D" parent="Elements/DieArea2" index="0" unique_id=406408250]
-position = Vector2(32, 0)
-shape = SubResource("RectangleShape2D_5j5gb")
+[node name="StartFlag" type="Area2D" parent="Elements" unique_id=1053383277]
+position = Vector2(2661, 536)
+collision_layer = 0
+collision_mask = 2
 
-[node name="DieArea3" parent="Elements" unique_id=2072846359 instance=ExtResource("7_i2041")]
-position = Vector2(2016, 766)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/StartFlag" unique_id=777319450]
+position = Vector2(-5, -110)
+shape = SubResource("RectangleShape2D_7fa5p")
 
-[node name="CollisionShape2D" parent="Elements/DieArea3" index="0" unique_id=406408250]
-position = Vector2(192, 0)
-shape = SubResource("RectangleShape2D_i2041")
+[node name="EndFlag" type="Area2D" parent="Elements" unique_id=672045195]
+position = Vector2(5797, 345)
+collision_layer = 0
+collision_mask = 2
 
-[node name="Button" parent="Elements" unique_id=1556884513 node_paths=PackedStringArray("target") instance=ExtResource("8_xy4tn")]
-position = Vector2(1148, 577)
-target = NodePath("../ExtensiblePlatform")
-keep_pressed = true
-player_minimal_scale = 1.0
-
-[node name="Button2" parent="Elements" unique_id=1607435186 node_paths=PackedStringArray("target") instance=ExtResource("8_xy4tn")]
-position = Vector2(1935, 576)
-target = NodePath("../ExtensiblePlatform")
-keep_pressed = false
-player_minimal_scale = 1.0
-
-[node name="ExtensiblePlatform" parent="Elements" unique_id=334852578 instance=ExtResource("8_usj0q")]
-position = Vector2(1985, 598)
-player_maximal_scale = 0.5
-
-[node name="Box" parent="Elements" unique_id=1278369624 instance=ExtResource("9_5j5gb")]
-position = Vector2(1009, 576)
-
-[node name="Box2" parent="Elements" unique_id=922700578 instance=ExtResource("9_5j5gb")]
-position = Vector2(858, 544)
-mass = 10.0
-
-[node name="CollisionShape2D" parent="Elements/Box2" index="0" unique_id=1732944633]
-shape = SubResource("RectangleShape2D_nauge")
-
-[node name="Sprite2D" parent="Elements/Box2" index="1" unique_id=171746085]
-scale = Vector2(2, 2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/EndFlag" unique_id=876265347]
+position = Vector2(-5, 8)
+shape = SubResource("RectangleShape2D_ycv2e")
 
 [node name="EnergyCan" parent="Elements" unique_id=1108197438 instance=ExtResource("17_beq0j")]
-position = Vector2(540, 512)
+position = Vector2(2950, 193)
+
+[node name="EnergyCan2" parent="Elements" unique_id=658481023 instance=ExtResource("17_beq0j")]
+position = Vector2(3870, 320)
+
+[node name="Box" parent="Elements" unique_id=922700578 instance=ExtResource("9_5j5gb")]
+position = Vector2(4341, 484)
+mass = 10.0
+
+[node name="Sprite2D" parent="Elements/Box" index="0" unique_id=171746085]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" parent="Elements/Box" index="1" unique_id=1732944633]
+position = Vector2(0.5, -33.5)
+shape = SubResource("RectangleShape2D_1idop")
+
+[node name="Button" parent="Elements" unique_id=1556884513 node_paths=PackedStringArray("target") instance=ExtResource("8_xy4tn")]
+position = Vector2(4698, 513)
+target = NodePath("../ExtensiblePlatform")
+keep_pressed = true
+player_minimal_scale = 1.5
+
+[node name="ExtensiblePlatform" parent="Elements" unique_id=334852578 instance=ExtResource("8_usj0q")]
+position = Vector2(4864, 534)
 
 [node name="Player" parent="." unique_id=1472009076 instance=ExtResource("18_beq0j")]
-position = Vector2(1941, 519)
-push_force = 80.0
+position = Vector2(202, -61)
+
+[node name="RetryMarker" type="Marker2D" parent="." unique_id=116129792]
+position = Vector2(2518, 532)
 
 [connection signal="pressed" from="HUD/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="body_entered" from="Elements/StartFlag" to="." method="_on_start_flag_body_entered"]
+[connection signal="body_entered" from="Elements/EndFlag" to="." method="_on_end_flag_body_entered"]
 
-[editable path="Elements/DieArea2"]
-[editable path="Elements/DieArea3"]
-[editable path="Elements/Box2"]
+[editable path="Elements/DieArea"]
+[editable path="Elements/Box"]
