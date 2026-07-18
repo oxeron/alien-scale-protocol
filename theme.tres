@@ -3,6 +3,6 @@
 [ext_resource type="FontFile" uid="uid://11hgjo2mxddw" path="res://fonts/Kenney Future.ttf" id="1_e1x85"]
 
 [resource]
-Label/colors/font_color = Color(0.950882, 0.676929, 0.5200728, 1)
+Label/colors/font_color = Color(0.972549, 0.24313726, 0.3647059, 1)
 Label/font_sizes/font_size = 40
 Label/fonts/font = ExtResource("1_e1x85")
