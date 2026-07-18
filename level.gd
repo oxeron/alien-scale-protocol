@@ -12,11 +12,12 @@ func _ready() -> void:
 	elapsed_time = 0.0
 	update_retry_label()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _physics_process(delta: float) -> void:
 	if is_chrono_running:
 		elapsed_time += delta
 		update_time_label()
+		
 
 func update_time_label() -> void:
 	@warning_ignore("integer_division")

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dy0jgv2iqyu1s"]
+
+[ext_resource type="Script" uid="uid://drhdem5p2wlmu" path="res://elements/die_area/die_area.gd" id="1_hff84"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fa5p"]
+size = Vector2(64, 64)
+
+[node name="DieArea" type="Area2D" unique_id=533860757]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_hff84")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=406408250]
+shape = SubResource("RectangleShape2D_7fa5p")
