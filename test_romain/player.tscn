@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 "
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qqgw4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngqyx"]
 atlas = ExtResource("1_s3mhm")
 region = Rect2(0, 384, 128, 128)
 
@@ -62,7 +62,7 @@ region = Rect2(128, 384, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qqgw4")
+"texture": SubResource("AtlasTexture_ngqyx")
 }],
 "loop": 1,
 "name": &"idle",
@@ -97,6 +97,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouhs8"]
+size = Vector2(75.5, 74)
+
 [node name="Player" type="CharacterBody2D" unique_id=854989483]
 script = SubResource("GDScript_vkktu")
 
@@ -105,3 +108,7 @@ sprite_frames = SubResource("SpriteFrames_j30ru")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.45550293
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=159712215]
+position = Vector2(-1, 15)
+shape = SubResource("RectangleShape2D_ouhs8")
