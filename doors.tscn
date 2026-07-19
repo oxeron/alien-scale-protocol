@@ -60,7 +60,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j30ru"]
 size = Vector2(84, 123)
 
-[node name="doors" type="Area2D" unique_id=371873337]
+[node name="Door" type="Area2D" unique_id=371873337]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_4ybfh")

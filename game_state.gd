@@ -4,7 +4,7 @@ signal energy_changed(value: int)
 
 var retry_count: int = 0
 var elapsed_time: float = 0.0
-var energy : int = 100:
+var energy : int = 0:
 	set(value):
 		energy = clamp(value, 0, 100)
 		energy_changed.emit(energy)
@@ -18,7 +18,8 @@ var player_scale: float = 1.0:
 var key_taken = false 
 var door_is_open = false
 
+
 func register_retry() -> void:
-	energy = 100
+	energy = 0
 	retry_count += 1
 	

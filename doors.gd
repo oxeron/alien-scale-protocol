@@ -8,3 +8,4 @@ func _on_body_entered(body: PhysicsBody2D) -> void:
 		up_door.play("open")
 		down_door.play("open")
 		GameState.door_is_open = true 
+		
