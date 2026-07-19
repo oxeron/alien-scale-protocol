@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="Alien Scale Protocol"
+config/description="A young Martian soldier is completing a training course in a factory/military base. Thanks to a device that allows him to continuously change his size, he must make his way through the level to find the key that unlocks the exit and complete his training."
 run/main_scene="uid://bhvhngq48oxra"
 config/features=PackedStringArray("4.7", "Forward Plus")
+boot_splash/image="uid://dybjs4014fbug"
 config/icon="res://icon.svg"
 
 [audio]
@@ -27,6 +29,7 @@ GameState="*uid://mbsbfuy2h3iq"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
