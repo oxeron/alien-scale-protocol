@@ -4,7 +4,7 @@ signal energy_changed(value: int)
 
 var retry_count: int = 0
 var elapsed_time: float = 0.0
-var energy : int = 100:
+var energy : int = 0:
 	set(value):
 		var previous_energy = energy
 		energy = clamp(value, 0, 100)

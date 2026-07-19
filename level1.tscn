@@ -391,7 +391,7 @@ player_minimal_scale = 1.5
 position = Vector2(4864, 534)
 
 [node name="FallingPlatform" parent="Elements" unique_id=882144087 instance=ExtResource("21_6e4cv")]
-position = Vector2(5952, 321)
+position = Vector2(5955, 321)
 
 [node name="Button2" parent="Elements" unique_id=526163704 node_paths=PackedStringArray("target") instance=ExtResource("8_xy4tn")]
 position = Vector2(6624, 193)
@@ -403,10 +403,11 @@ marker_a = NodePath("../Platform1A")
 marker_b = NodePath("../Platform1B")
 
 [node name="MovingFallingPlatform2" parent="Elements" unique_id=1651201999 node_paths=PackedStringArray("marker_a", "marker_b") instance=ExtResource("21_uuy0h")]
-position = Vector2(6868, 181)
-marker_a = NodePath("../Platform2A")
-marker_b = NodePath("../Platform2B")
+position = Vector2(7429, 191)
+marker_a = NodePath("../Platform2B")
+marker_b = NodePath("../Platform2A")
 pause_at_ends = 1.0
+auto_start = false
 
 [node name="Platform1A" type="Marker2D" parent="Elements" unique_id=1516531529]
 position = Vector2(6592, 469)
@@ -415,10 +416,10 @@ position = Vector2(6592, 469)
 position = Vector2(6592, 770)
 
 [node name="Platform2A" type="Marker2D" parent="Elements" unique_id=856928930]
-position = Vector2(6868, 181)
+position = Vector2(6868, 191)
 
 [node name="Platform2B" type="Marker2D" parent="Elements" unique_id=1626328059]
-position = Vector2(7426, 181)
+position = Vector2(7429, 191)
 
 [node name="key" parent="Elements" unique_id=1904920437 instance=ExtResource("22_uuy0h")]
 position = Vector2(7494, 43)
@@ -460,7 +461,7 @@ z_index = 0
 position = Vector2(6617, 814)
 
 [node name="Player" parent="." unique_id=1472009076 instance=ExtResource("18_beq0j")]
-position = Vector2(2414, 505)
+position = Vector2(327, -89)
 
 [node name="RetryMarker" type="Marker2D" parent="." unique_id=116129792]
 position = Vector2(2518, 532)
