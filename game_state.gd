@@ -41,7 +41,7 @@ func register_retry() -> void:
 	audiostream_player.stream = preload("res://assets/Sounds/sfx_disappear.ogg")
 	audiostream_player.play()
 	
-	get_tree().reload_current_scene()
+	get_tree().call_deferred("reload_current_scene")
 
 func _ready() -> void:
 	add_child(audiostream_player)
