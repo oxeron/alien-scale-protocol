@@ -53,7 +53,7 @@ Scale Protocol APPROVED." % [minutes, seconds, milliseconds, retries.text]
 
 func _on_retry_button_pressed() -> void:
 	GameState.register_retry()
-	get_tree().reload_current_scene()
+	
 
 func update_retry_label() -> void:
 	retries.text = "%01d Retry" % [GameState.retry_count] if GameState.retry_count <= 1 else "%01d Retries" % [GameState.retry_count]

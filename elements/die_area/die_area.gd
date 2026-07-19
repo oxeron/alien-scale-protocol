@@ -6,4 +6,4 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		GameState.register_retry()
-		get_tree().reload_current_scene()
+		
