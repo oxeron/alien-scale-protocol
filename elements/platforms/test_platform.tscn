@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://u3u1m5d0euh6"]
+
+[ext_resource type="Script" uid="uid://bc6fh3qjptgjh" path="res://animatable_body_2d.gd" id="1_50crj"]
+[ext_resource type="Texture2D" uid="uid://oafuxcofns2s" path="res://assets/spritesheet-tiles-default.png" id="2_50crj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxsck"]
+size = Vector2(255, 63)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" unique_id=1562307248]
+script = ExtResource("1_50crj")
+pause_at_ends = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=326335452]
+texture = ExtResource("2_50crj")
+centered = false
+region_enabled = true
+region_rect = Rect2(195, 650, 64, 64)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1945224664]
+position = Vector2(64, 0)
+texture = ExtResource("2_50crj")
+centered = false
+region_enabled = true
+region_rect = Rect2(129, 650, 64, 64)
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=171460003]
+position = Vector2(128, 0)
+texture = ExtResource("2_50crj")
+centered = false
+region_enabled = true
+region_rect = Rect2(129, 650, 64, 64)
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=1713550551]
+position = Vector2(192, 0)
+texture = ExtResource("2_50crj")
+centered = false
+region_enabled = true
+region_rect = Rect2(260, 650, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1307586820]
+position = Vector2(128, 32)
+shape = SubResource("RectangleShape2D_bxsck")
