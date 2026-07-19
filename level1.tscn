@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://468fq436u55a" path="res://elements/platforms/moving_platform/moving_falling_platform.tscn" id="21_uuy0h"]
 [ext_resource type="PackedScene" uid="uid://jtqndigr7u82" path="res://elements/key/key.tscn" id="22_uuy0h"]
 [ext_resource type="PackedScene" uid="uid://bwpahfr25jtso" path="res://doors.tscn" id="24_52iny"]
+[ext_resource type="PackedScene" uid="uid://wp0w2gllgttg" path="res://elements/fireball/fireball.tscn" id="24_nxqqj"]
 
 [sub_resource type="Animation" id="Animation_c5gc3"]
 length = 0.001
@@ -421,6 +422,42 @@ position = Vector2(7426, 181)
 
 [node name="key" parent="Elements" unique_id=1904920437 instance=ExtResource("22_uuy0h")]
 position = Vector2(7494, 43)
+
+[node name="fireball" parent="Elements" unique_id=1106047302 instance=ExtResource("24_nxqqj")]
+z_index = 0
+position = Vector2(3424, 805)
+
+[node name="fireball2" parent="Elements" unique_id=1670878853 instance=ExtResource("24_nxqqj")]
+z_index = 0
+position = Vector2(3347, 786)
+
+[node name="fireball3" parent="Elements" unique_id=769551339 instance=ExtResource("24_nxqqj")]
+z_index = 0
+position = Vector2(3017, 791)
+
+[node name="fireball4" parent="Elements" unique_id=1673406310 instance=ExtResource("24_nxqqj")]
+z_index = 0
+position = Vector2(6815, 815)
+
+[node name="fireball5" parent="Elements" unique_id=1427079583 instance=ExtResource("24_nxqqj")]
+z_index = 0
+position = Vector2(5995, 797)
+
+[node name="fireball6" parent="Elements" unique_id=1612581839 instance=ExtResource("24_nxqqj")]
+z_index = 0
+position = Vector2(6218, 781)
+
+[node name="fireball7" parent="Elements" unique_id=1702329751 instance=ExtResource("24_nxqqj")]
+z_index = 0
+position = Vector2(7084, 794)
+
+[node name="fireball8" parent="Elements" unique_id=96496335 instance=ExtResource("24_nxqqj")]
+z_index = 0
+position = Vector2(7359, 815)
+
+[node name="fireball9" parent="Elements" unique_id=685543704 instance=ExtResource("24_nxqqj")]
+z_index = 0
+position = Vector2(6617, 814)
 
 [node name="Player" parent="." unique_id=1472009076 instance=ExtResource("18_beq0j")]
 position = Vector2(2414, 505)
