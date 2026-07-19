@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://etv0ye7ck251" path="res://elements/fireball/fireball.gd" id="1_t4y5o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j30ru"]
-radius = 19.026299
+radius = 24.5153
 
 [sub_resource type="Animation" id="Animation_b8m7y"]
 length = 0.001
@@ -56,7 +56,7 @@ tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.1666666, 2.2),
+"times": PackedFloat32Array(0, 1.1, 2.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(30, -250), Vector2(50, 0)]
@@ -65,7 +65,7 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 4
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.6666667, 1.4, 2.2),
@@ -80,10 +80,10 @@ tracks/2/path = NodePath("CollisionShape2D:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8, 1.4666667, 2.6666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.1, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(20, -150), Vector2(20, -170), Vector2(40, 0)]
+"values": [Vector2(0, 0), Vector2(30, -250), Vector2(50, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xhoc4"]
