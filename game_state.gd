@@ -22,4 +22,4 @@ var door_is_open = false
 func register_retry() -> void:
 	energy = 0
 	retry_count += 1
-	
+	player_scale = 1.0
