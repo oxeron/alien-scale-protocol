@@ -23,7 +23,12 @@ var player_scale: float = 1.0:
 		# Consume energy only if player scale changed
 		if player_scale != previous_value:
 			GameState.energy -= 1
-var key_taken = false 
+var key_taken = false:
+	set(value):
+		if value:
+			audiostream_player.stream = preload("res://assets/Sounds/sfx_coin.ogg")
+			audiostream_player.play()
+
 var door_is_open = false
 
 var audiostream_player = AudioStreamPlayer.new()
