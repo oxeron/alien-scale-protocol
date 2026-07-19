@@ -425,7 +425,7 @@ position = Vector2(6868, 181)
 position = Vector2(7426, 181)
 
 [node name="Player" parent="." unique_id=1472009076 instance=ExtResource("18_beq0j")]
-position = Vector2(7050, 107)
+position = Vector2(399, 66)
 
 [node name="RetryMarker" type="Marker2D" parent="." unique_id=116129792]
 position = Vector2(2518, 532)
