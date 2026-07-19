@@ -360,17 +360,19 @@ position = Vector2(8024, 101)
 
 [node name="EnergyCan" parent="Elements" unique_id=1108197438 instance=ExtResource("17_beq0j")]
 position = Vector2(2950, 193)
+energy = 20
 
 [node name="EnergyCan2" parent="Elements" unique_id=658481023 instance=ExtResource("17_beq0j")]
 position = Vector2(3870, 320)
-energy = 15
+energy = 20
 
 [node name="EnergyCan3" parent="Elements" unique_id=1135923220 instance=ExtResource("17_beq0j")]
 position = Vector2(5408, 321)
+energy = 20
 
 [node name="EnergyCan4" parent="Elements" unique_id=605458893 instance=ExtResource("17_beq0j")]
 position = Vector2(7008, 384)
-energy = 15
+energy = 20
 
 [node name="Box" parent="Elements" unique_id=922700578 instance=ExtResource("9_5j5gb")]
 position = Vector2(4341, 484)
