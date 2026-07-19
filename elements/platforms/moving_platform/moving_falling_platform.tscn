@@ -12,5 +12,5 @@ loop = true
 pause_at_ends = 0.0
 auto_start = true
 
-[node name="CollisionShape2D" parent="." index="0" unique_id=1539126981]
-disabled = true
+[node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(2096993244) index="0" unique_id=366511087]
+disabled = false

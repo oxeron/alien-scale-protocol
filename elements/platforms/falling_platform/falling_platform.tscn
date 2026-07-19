@@ -1,7 +1,7 @@
-[gd_scene format=4 uid="uid://loxjd2v1mfv0"]
+[gd_scene format=3 uid="uid://loxjd2v1mfv0"]
 
 [ext_resource type="Script" uid="uid://x1k8v46u4v4l" path="res://elements/platforms/falling_platform/falling_platform.gd" id="1_lk8pb"]
-[ext_resource type="TileSet" uid="uid://cx8rk77hpekqf" path="res://assets/new_tile_set.tres" id="2_g6i0i"]
+[ext_resource type="Texture2D" uid="uid://oafuxcofns2s" path="res://assets/spritesheet-tiles-default.png" id="2_g6i0i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fa5p"]
 size = Vector2(383, 22)
@@ -10,7 +10,7 @@ size = Vector2(383, 22)
 size = Vector2(383, 22)
 
 [node name="FallingPlatform" type="AnimatableBody2D" unique_id=334852578]
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_lk8pb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1539126981]
@@ -24,10 +24,43 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=366511087]
 position = Vector2(191.5, 6)
 shape = SubResource("RectangleShape2D_v5d7d")
+disabled = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=864324066]
-tile_map_data = PackedByteArray("AAAAAAAAAwADAAoAAAABAAAAAwACAAoAAAAEAAAAAwACAAoAAAAFAAAAAwAEAAoAAAACAAAAAwACAAoAAAADAAAAAwACAAoAAAA=")
-tile_set = ExtResource("2_g6i0i")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1892977666]
+position = Vector2(32, 32)
+texture = ExtResource("2_g6i0i")
+region_enabled = true
+region_rect = Rect2(195, 650, 64, 64)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1845223052]
+position = Vector2(95, 32)
+texture = ExtResource("2_g6i0i")
+region_enabled = true
+region_rect = Rect2(130, 650, 64, 64)
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=543701652]
+position = Vector2(158, 32)
+texture = ExtResource("2_g6i0i")
+region_enabled = true
+region_rect = Rect2(130, 650, 64, 64)
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=528721280]
+position = Vector2(221, 32)
+texture = ExtResource("2_g6i0i")
+region_enabled = true
+region_rect = Rect2(130, 650, 64, 64)
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=856661550]
+position = Vector2(284, 32)
+texture = ExtResource("2_g6i0i")
+region_enabled = true
+region_rect = Rect2(130, 650, 64, 64)
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=1929905780]
+position = Vector2(347, 32)
+texture = ExtResource("2_g6i0i")
+region_enabled = true
+region_rect = Rect2(260, 650, 64, 64)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
