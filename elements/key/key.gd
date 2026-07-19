@@ -6,7 +6,7 @@ extends Area2D
 
 var keytaken = false 
 
-func _on_body_entered(body: PhysicsBody2D) -> void:
+func _on_body_entered(_body: PhysicsBody2D) -> void:
 	if keytaken ==false : 
 		keytaken = true 
 		GameState.key_taken = true 
