@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://ct6tn7jqvw0jn"]
 
 [ext_resource type="Texture2D" uid="uid://6ao3csmdiobn" path="res://assets/spritesheet-characters-default.png" id="1_4flbx"]
+[ext_resource type="AudioStream" uid="uid://cdpqfyy8gi4fd" path="res://assets/Sounds/sfx_jump.ogg" id="2_onrkg"]
+[ext_resource type="AudioStream" uid="uid://btmh5wjh31vic" path="res://assets/Sounds/highUp.ogg" id="3_hqtel"]
+[ext_resource type="AudioStream" uid="uid://dg5cqr5ihb0tu" path="res://assets/Sounds/highDown.ogg" id="4_sweqy"]
 
 [sub_resource type="GDScript" id="GDScript_vkktu"]
 script/source = "extends CharacterBody2D
+
 
 @export var base_push_force: float = 200.0 :
 	set(value):
@@ -13,6 +17,10 @@ script/source = "extends CharacterBody2D
 @export var JUMP_VELOCITY = -500.0 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var audio_stream_jump: AudioStreamPlayer2D = $AudioStreamJump
+@onready var audio_stream_up: AudioStreamPlayer2D = $AudioStreamUp
+@onready var audio_stream_down: AudioStreamPlayer2D = $AudioStreamDown
+
 
 var base_shape_radius: float
 var base_shape_height: float
@@ -49,7 +57,8 @@ func _physics_process(delta: float) -> void:
 			update_collision_size()
 
 			push_force = base_push_force * GameState.player_scale
-			
+			if not audio_stream_up.playing:
+				audio_stream_up.play()
 			
 		elif Input.is_action_pressed(\"scale down\") :
 			GameState.player_scale -= 0.1
@@ -59,12 +68,14 @@ func _physics_process(delta: float) -> void:
 			update_collision_size()
 
 			push_force = base_push_force * GameState.player_scale
-		
+			if not audio_stream_down.playing:
+				audio_stream_down.play()
 		
 	# Handle jump.
 	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
 		velocity.y = clamp(JUMP_VELOCITY / GameState.player_scale, -500 , 0)
-
+		audio_stream_jump.play()
+		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis(\"ui_left\", \"ui_right\")
@@ -183,3 +194,12 @@ offset = Vector2(-64, -75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=37629409]
 shape = SubResource("CapsuleShape2D_4flbx")
+
+[node name="AudioStreamJump" type="AudioStreamPlayer2D" parent="." unique_id=207933136]
+stream = ExtResource("2_onrkg")
+
+[node name="AudioStreamUp" type="AudioStreamPlayer2D" parent="." unique_id=921258441]
+stream = ExtResource("3_hqtel")
+
+[node name="AudioStreamDown" type="AudioStreamPlayer2D" parent="." unique_id=1689731508]
+stream = ExtResource("4_sweqy")

@@ -366,6 +366,9 @@ position = Vector2(3870, 320)
 [node name="EnergyCan3" parent="Elements" unique_id=1135923220 instance=ExtResource("17_beq0j")]
 position = Vector2(5408, 321)
 
+[node name="EnergyCan4" parent="Elements" unique_id=605458893 instance=ExtResource("17_beq0j")]
+position = Vector2(7008, 384)
+
 [node name="Box" parent="Elements" unique_id=922700578 instance=ExtResource("9_5j5gb")]
 position = Vector2(4341, 484)
 mass = 10.0
@@ -392,8 +395,6 @@ position = Vector2(5952, 321)
 [node name="Button2" parent="Elements" unique_id=526163704 node_paths=PackedStringArray("target") instance=ExtResource("8_xy4tn")]
 position = Vector2(6624, 193)
 target = NodePath("../MovingFallingPlatform2")
-keep_pressed = false
-player_minimal_scale = 1.0
 
 [node name="MovingFallingPlatform1" parent="Elements" unique_id=332116699 node_paths=PackedStringArray("marker_a", "marker_b") instance=ExtResource("21_uuy0h")]
 position = Vector2(6592, 533)
@@ -422,7 +423,7 @@ position = Vector2(7426, 181)
 position = Vector2(7494, 43)
 
 [node name="Player" parent="." unique_id=1472009076 instance=ExtResource("18_beq0j")]
-position = Vector2(240, -71)
+position = Vector2(4602, 444)
 
 [node name="RetryMarker" type="Marker2D" parent="." unique_id=116129792]
 position = Vector2(2518, 532)

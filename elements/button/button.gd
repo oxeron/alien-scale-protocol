@@ -29,7 +29,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if target.has_method("activate"):
 			target.activate()
 			_is_pressed = true
-			
+
 func _on_body_exited(_body: Node2D) -> void:
 	if not keep_pressed and _is_pressed:
 		return
