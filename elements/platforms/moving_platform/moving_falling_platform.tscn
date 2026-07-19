@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://468fq436u55a"]
+
+[ext_resource type="PackedScene" uid="uid://loxjd2v1mfv0" path="res://elements/platforms/falling_platform/falling_platform.tscn" id="1_by7wv"]
+[ext_resource type="Script" uid="uid://cvc60324wxnl2" path="res://elements/platforms/moving_platform/moving_falling_platform.gd" id="2_gnk2p"]
+
+[node name="MovingFallingPlatform" unique_id=334852578 instance=ExtResource("1_by7wv")]
+script = ExtResource("2_gnk2p")
+speed = 100.0
+trans_type = 1
+ease_type = 2
+loop = true
+pause_at_ends = 0.0
+auto_start = true
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1539126981]
+disabled = true

@@ -156,6 +156,7 @@ script = SubResource("GDScript_vkktu")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=63506709]
 limit_left = 0
 limit_top = 0
+limit_right = 8200
 limit_bottom = 770
 position_smoothing_enabled = true
 

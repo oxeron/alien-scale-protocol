@@ -6,6 +6,7 @@ var _is_player_on_top: bool = false
 func _ready() -> void:
 	activated = false
 	_is_player_on_top = false
+	
 
 # Check if player is bigger than limit if alreay on top
 func _physics_process(_delta: float) -> void:
