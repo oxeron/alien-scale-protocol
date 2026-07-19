@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://ct6tn7jqvw0jn" path="res://player.tscn" id="18_beq0j"]
 [ext_resource type="PackedScene" uid="uid://loxjd2v1mfv0" path="res://elements/platforms/falling_platform/falling_platform.tscn" id="21_6e4cv"]
 [ext_resource type="PackedScene" uid="uid://468fq436u55a" path="res://elements/platforms/moving_platform/moving_falling_platform.tscn" id="21_uuy0h"]
+[ext_resource type="PackedScene" uid="uid://jtqndigr7u82" path="res://elements/key/key.tscn" id="22_uuy0h"]
+[ext_resource type="PackedScene" uid="uid://bwpahfr25jtso" path="res://doors.tscn" id="24_52iny"]
 
 [sub_resource type="Animation" id="Animation_c5gc3"]
 length = 0.001
@@ -424,11 +426,18 @@ position = Vector2(6868, 181)
 [node name="Platform2B" type="Marker2D" parent="Elements" unique_id=1626328059]
 position = Vector2(7426, 181)
 
+[node name="key" parent="Elements" unique_id=1904920437 instance=ExtResource("22_uuy0h")]
+position = Vector2(124, 517)
+
 [node name="Player" parent="." unique_id=1472009076 instance=ExtResource("18_beq0j")]
 position = Vector2(399, 66)
 
 [node name="RetryMarker" type="Marker2D" parent="." unique_id=116129792]
 position = Vector2(2518, 532)
+
+[node name="doors" parent="." unique_id=371873337 instance=ExtResource("24_52iny")]
+z_index = -1
+position = Vector2(1067, 486)
 
 [connection signal="pressed" from="HUD/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="body_entered" from="Elements/StartFlag" to="." method="_on_start_flag_body_entered"]

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bwpahfr25jtso"]
+
+[ext_resource type="Script" uid="uid://kx5hm7yej446" path="res://doors.gd" id="1_4ybfh"]
+[ext_resource type="Texture2D" uid="uid://oafuxcofns2s" path="res://assets/spritesheet-tiles-default.png" id="1_ik3nm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik3nm"]
+atlas = ExtResource("1_ik3nm")
+region = Rect2(390, 130, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ybfh"]
+atlas = ExtResource("1_ik3nm")
+region = Rect2(520, 130, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j30ru"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ik3nm")
+}],
+"loop": 1,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ybfh")
+}],
+"loop": 1,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb6k2"]
+atlas = ExtResource("1_ik3nm")
+region = Rect2(325, 130, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmq8f"]
+atlas = ExtResource("1_ik3nm")
+region = Rect2(455, 130, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ouhs8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb6k2")
+}],
+"loop": 1,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmq8f")
+}],
+"loop": 1,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j30ru"]
+size = Vector2(84, 123)
+
+[node name="doors" type="Area2D" unique_id=371873337]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_4ybfh")
+
+[node name="up_door" type="AnimatedSprite2D" parent="." unique_id=1655383897]
+sprite_frames = SubResource("SpriteFrames_j30ru")
+animation = &"close"
+autoplay = "close"
+
+[node name="down_door" type="AnimatedSprite2D" parent="." unique_id=1483133817]
+position = Vector2(0, 60)
+sprite_frames = SubResource("SpriteFrames_ouhs8")
+animation = &"close"
+autoplay = "close"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1372710654]
+light_mask = 0
+visibility_layer = 2
+position = Vector2(-2, 30.5)
+shape = SubResource("RectangleShape2D_j30ru")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

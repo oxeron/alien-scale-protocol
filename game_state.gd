@@ -15,7 +15,8 @@ var player_scale: float = 1.0:
 		# Consume energy only if player scale changed
 		if player_scale != previous_value:
 			GameState.energy -= 1
-
+var key_taken = false 
+var door_is_open = false
 
 func register_retry() -> void:
 	energy = 100
