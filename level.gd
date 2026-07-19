@@ -8,6 +8,7 @@ extends Node2D
 @onready var end_game_label: Label = $HUD/EndGame/EndGameLabel
 @onready var retry_marker: Marker2D = $RetryMarker
 @onready var player: CharacterBody2D = $Player
+@onready var animation_player: AnimationPlayer = $HUD/EnergyProgressBar/AnimationPlayer
 
 var elapsed_time: float = 0.0
 var is_chrono_running: bool = false
@@ -59,12 +60,16 @@ func update_retry_label() -> void:
 
 func _on_energy_changed(energy: int):
 	energy_progress_bar.value = energy
+	if energy == 0:
+		animation_player.play("empty")
+	else:
+		animation_player.stop()
 
 func _on_start_flag_body_entered(_body: Node2D) -> void:
 	is_chrono_running = true
 
 
-func _on_end_flag_body_entered(body: Node2D) -> void:
+func _on_end_flag_body_entered(_body: Node2D) -> void:
 	is_chrono_running = false
 	end_game.show()
 	get_tree().paused = true
