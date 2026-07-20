@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://loxjd2v1mfv0" path="res://elements/platforms/falling_platform/falling_platform.tscn" id="21_6e4cv"]
 [ext_resource type="PackedScene" uid="uid://468fq436u55a" path="res://elements/platforms/moving_platform/moving_falling_platform.tscn" id="21_uuy0h"]
 [ext_resource type="PackedScene" uid="uid://jtqndigr7u82" path="res://elements/key/key.tscn" id="22_uuy0h"]
-[ext_resource type="PackedScene" uid="uid://bwpahfr25jtso" path="res://doors.tscn" id="24_52iny"]
+[ext_resource type="PackedScene" uid="uid://bwpahfr25jtso" path="res://elements/doors/doors.tscn" id="24_52iny"]
 [ext_resource type="PackedScene" uid="uid://wp0w2gllgttg" path="res://elements/fireball/fireball.tscn" id="24_nxqqj"]
 
 [sub_resource type="Animation" id="Animation_c5gc3"]
