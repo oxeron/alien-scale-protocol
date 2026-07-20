@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bwpahfr25jtso"]
 
-[ext_resource type="Script" uid="uid://kx5hm7yej446" path="res://doors.gd" id="1_4ybfh"]
+[ext_resource type="Script" uid="uid://kx5hm7yej446" path="res://elements/doors/doors.gd" id="1_4ybfh"]
 [ext_resource type="Texture2D" uid="uid://oafuxcofns2s" path="res://assets/spritesheet-tiles-default.png" id="1_ik3nm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ik3nm"]
